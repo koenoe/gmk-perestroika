@@ -1,0 +1,11 @@
+language: node_js
+cache: yarn
+node_js:
+  - '12.9.0'
+script:
+  - yarn flow
+  - yarn flow:cover
+  - yarn lint
+  - yarn test
+after_success:
+  - yarn test:coveralls
