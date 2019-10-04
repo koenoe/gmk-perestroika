@@ -1,7 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
 const CopyPlugin = require('copy-webpack-plugin');
-const ImageminPlugin = require('imagemin-webpack');
 
 const resolveRelative = file => path.resolve(__dirname, file);
 
@@ -53,6 +52,25 @@ module.exports = options => ({
               limit: 10 * 1024,
             },
           },
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              mozjpeg: {
+                enabled: true,
+                progressive: true,
+              },
+              gifsicle: {
+                interlaced: false,
+              },
+              optipng: {
+                optimizationLevel: 7,
+              },
+              pngquant: {
+                quality: '65-90',
+                speed: 4,
+              },
+            },
+          },
         ],
       },
       {
@@ -63,28 +81,6 @@ module.exports = options => ({
   },
   plugins: options.plugins.concat([
     new CopyPlugin([resolveRelative('../img/*.{png,svg,jpg,gif,webp}')]),
-    new ImageminPlugin({
-      name: '[name].[ext]',
-      bail: false, // Ignore errors on corrupted images
-      cache: true,
-      imageminOptions: {
-        plugins: [
-          ['gifsicle', { interlaced: true }],
-          ['jpegtran', { progressive: true }],
-          ['optipng', { optimizationLevel: 5 }],
-          [
-            'svgo',
-            {
-              plugins: [
-                {
-                  removeViewBox: false,
-                },
-              ],
-            },
-          ],
-        ],
-      },
-    }),
   ]),
   resolve: {
     modules: ['node_modules', 'src'],
