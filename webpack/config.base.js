@@ -4,6 +4,42 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 const resolveRelative = file => path.resolve(__dirname, file);
 
+const babelPlugins = [
+  'emotion',
+  '@babel/plugin-transform-async-to-generator',
+  '@babel/plugin-syntax-dynamic-import',
+  '@babel/plugin-proposal-object-rest-spread',
+  '@babel/plugin-transform-template-literals',
+];
+
+const babelOptions = {
+  presets: [
+    [
+      '@babel/preset-env',
+      {
+        modules: false,
+        useBuiltIns: 'usage',
+        debug: false,
+        loose: true,
+        corejs: 3,
+        targets: {
+          browsers: [
+            'last 6 Chrome versions',
+            'last 6 Firefox versions',
+            'Firefox ESR',
+            'last 3 Safari versions',
+            'last 3 Opera versions',
+            'last 3 Edge versions',
+          ],
+        },
+      },
+    ],
+    '@babel/preset-flow',
+    '@babel/preset-react',
+  ],
+  plugins: babelPlugins,
+};
+
 module.exports = options => ({
   mode: options.mode,
   entry: options.entry,
@@ -22,7 +58,7 @@ module.exports = options => ({
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-          options: options.babelQuery,
+          options: babelOptions,
         },
       },
       {
