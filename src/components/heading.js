@@ -8,7 +8,7 @@ type HeaderProps = $ReadOnly<{|
   textLength: string,
 |}>;
 
-const Header = styled.header`
+const Header: any = styled.header`
   margin-bottom: 25px;
 
   &:before {
@@ -40,9 +40,11 @@ type Props = $ReadOnly<{|
   children: Node,
 |}>;
 
+type Ref = ?HTMLElement;
+
 export default function Heading({ children }: Props): Node {
-  const ref = React.useRef(null);
-  const [textLength, setTextLength] = React.useState(0);
+  const ref = React.useRef<Ref>();
+  const [textLength, setTextLength] = React.useState<number>(0);
 
   React.useEffect(() => {
     if (!ref.current) {
