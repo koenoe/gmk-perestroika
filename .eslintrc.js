@@ -35,6 +35,7 @@ module.exports = {
     'import/prefer-default-export': 0,
     'prettier/prettier': ['error', prettierOptions],
     'react/jsx-filename-extension': 0,
+    'react/require-default-props': 0,
   },
   settings: {
     'import/resolver': {
