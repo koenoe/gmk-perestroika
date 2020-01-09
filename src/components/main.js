@@ -3,40 +3,14 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 import type { Node } from 'react';
-import LogoUrl from '../../img/logo.png';
+
+import Heading from './heading.js';
+import LogoUrl from '../../img/logo.svg';
 
 const Logo = styled.img`
-  margin: auto;
-  max-width: 800px;
+  margin: 100px auto;
+  max-width: 600px;
   display: block;
-`;
-
-const Heading = styled.header`
-  margin-bottom: 25px;
-
-  &:before {
-    content: '';
-    border-top: 10px solid;
-    border-image-source: linear-gradient(
-      -90deg,
-      currentColor calc(50% + ${props => props.textLength}),
-      transparent calc(50% + ${props => props.textLength})
-    );
-    border-image-slice: 1;
-    display: block;
-  }
-
-  &:after {
-    content: '';
-    border-top: 10px solid;
-    border-image-source: linear-gradient(
-      90deg,
-      currentColor calc(50% + ${props => props.textLength}),
-      transparent calc(50% + ${props => props.textLength})
-    );
-    border-image-slice: 1;
-    display: block;
-  }
 `;
 
 const H1 = styled.h1`
@@ -44,7 +18,7 @@ const H1 = styled.h1`
 `;
 
 const Intro = styled.p`
-  margin: 0 auto 25px;
+  margin: 0 auto;
   max-width: 600px;
 `;
 
@@ -62,23 +36,12 @@ const Container = styled.div`
 // `;
 
 export default function Main(): Node {
-  const ref = React.useRef(null);
-  const [textLength, setTextLength] = React.useState(0);
-
-  React.useEffect(() => {
-    if (!ref.current) {
-      return;
-    }
-
-    setTextLength(ref.current.textContent.length);
-  });
-
   return (
     <>
       <Logo src={LogoUrl} />
       <Container>
-        <Heading textLength={`${textLength}ex`}>
-          <H1 ref={ref}>Our inspiration</H1>
+        <Heading>
+          <H1>Our inspiration</H1>
         </Heading>
         <Intro>
           The rich dark red colour is a standout feature of this set. Its
