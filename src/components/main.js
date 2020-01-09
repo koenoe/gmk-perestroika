@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 
 import type { Node } from 'react';
 
-import Heading from './heading.js';
+import Heading from 'components/heading.js';
 import LogoUrl from '../../img/logo.svg';
 
 const Logo = styled.img`
