@@ -18,7 +18,7 @@ const babelOptions = {
       '@babel/preset-env',
       {
         modules: false,
-        useBuiltIns: 'usage',
+        useBuiltIns: 'entry',
         debug: false,
         loose: true,
         corejs: 3,
