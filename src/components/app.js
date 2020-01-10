@@ -29,7 +29,8 @@ export default function App(): Node {
           h1,
           h2,
           h3,
-          h4 {
+          h4,
+          strong {
             font-family: 'Montserrat', serif;
             font-weight: 900;
             text-transform: uppercase;

@@ -5,10 +5,11 @@ import styled from '@emotion/styled';
 import type { Node } from 'react';
 
 import Heading from 'components/heading.js';
+import Countdown from 'components/countdown.js';
 import LogoUrl from '../../img/logo.svg';
 
 const Logo = styled.img`
-  margin: 100px auto;
+  margin: 100px auto 50px;
   max-width: 600px;
   display: block;
 `;
@@ -28,17 +29,30 @@ const Container = styled.div`
   color: #59191f;
   background: #e9e0d2;
   padding: 25px 0;
+  box-sizing: border-box;
 `;
 
-// const Divider = styled.hr`
-//   border: 1px solid rgba(255, 255, 255, 0.2);
-//   max-width: 300px;
-// `;
+const Title = styled.h1`
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 10px;
+`;
+
+const Launch = styled.div`
+  margin: 0 auto 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 export default function Main(): Node {
   return (
     <>
       <Logo src={LogoUrl} />
+      <Launch>
+        <Title>Groupbuy ends in</Title>
+        <Countdown date="2020-02-29T23:59:59" />
+      </Launch>
       <Container>
         <Heading>
           <H1>Our inspiration</H1>
