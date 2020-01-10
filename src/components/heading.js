@@ -6,43 +6,57 @@ import type { Node } from 'react';
 
 type HeaderProps = $ReadOnly<{|
   textLength: string,
+  alignment: 'left' | 'right' | 'center',
 |}>;
 
 const Header: any = styled.header`
   margin-bottom: 25px;
+  line-height: 1.5;
+  contain: layout;
 
-  &:before {
+  &:${({ alignment }: HeaderProps) =>
+    alignment === 'left' ? 'before' : 'after'} {
     content: '';
-    border-top: 10px solid;
-    border-image-source: linear-gradient(
-      -90deg,
-      currentColor calc(50% + ${({ textLength }: HeaderProps) => textLength}),
-      transparent calc(50% + ${({ textLength }: HeaderProps) => textLength})
+    height: 8px;
+    background-color: currentColor;
+    width: 100vw;
+    transform: translateX(
+      calc(-100% + ${({ textLength }: HeaderProps) => textLength} + 1rem)
     );
-    border-image-slice: 1;
-    display: block;
+    display: inline-block;
+    text-align: left;
   }
 
-  &:after {
+  &:${({ alignment }: HeaderProps) =>
+    alignment === 'left' ? 'after' : 'before'} {
     content: '';
-    border-top: 10px solid;
-    border-image-source: linear-gradient(
-      90deg,
-      currentColor calc(50% + ${({ textLength }: HeaderProps) => textLength}),
-      transparent calc(50% + ${({ textLength }: HeaderProps) => textLength})
-    );
-    border-image-slice: 1;
+    height: 8px;
+    background-color: currentColor;
+    width: 100vw;
+    transform: translateX(-1rem);
+    display: inline-block;
+    text-align: right;
+  }
+
+  span {
+    font-weight: 700;
     display: block;
+    font-size: 12px;
+  }
+
+  h1, h2 {
+    font-size: 34px;
   }
 `;
 
 type Props = $ReadOnly<{|
   children: Node,
+  alignment: 'left' | 'right' | 'center',
 |}>;
 
 type Ref = ?HTMLElement;
 
-export default function Heading({ children }: Props): Node {
+export default function Heading({ children, alignment }: Props): Node {
   const ref = React.useRef<Ref>();
   const [textLength, setTextLength] = React.useState<number>(0);
 
@@ -55,7 +69,7 @@ export default function Heading({ children }: Props): Node {
   });
 
   return (
-    <Header ref={ref} textLength={`${textLength}ex`}>
+    <Header ref={ref} textLength={`${textLength}ex`} alignment={alignment}>
       {children}
     </Header>
   );

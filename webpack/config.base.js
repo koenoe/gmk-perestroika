@@ -92,18 +92,22 @@ module.exports = options => ({
             loader: 'image-webpack-loader',
             options: {
               mozjpeg: {
-                enabled: true,
                 progressive: true,
+                quality: 65,
               },
               gifsicle: {
                 interlaced: false,
               },
               optipng: {
-                optimizationLevel: 7,
+                enabled: false,
               },
               pngquant: {
                 quality: [0.65, 0.9],
                 speed: 4,
+              },
+              // the webp option will enable WEBP
+              webp: {
+                quality: 75,
               },
             },
           },
