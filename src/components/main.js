@@ -48,8 +48,8 @@ const Launch = styled.div`
 `;
 
 const Container = styled.div`
-  margin: 0 auto 50px;
-  max-width: 1200px;
+  margin: auto;
+  max-width: 1600px;
 `;
 
 export default function Main(): Node {

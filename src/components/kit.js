@@ -1,6 +1,9 @@
 // @flow
 import React from 'react';
 import styled from '@emotion/styled';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+// $FlowFixMe
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 import type { Node } from 'react';
 
@@ -12,41 +15,39 @@ import unusualKitUrl from '../../img/unusual-kit.png';
 import modernKitUrl from '../../img/modern-kit.png';
 
 const Container = styled.div`
-  margin: 0 auto 75px;
-  max-width: 1200px;
+  margin-bottom: 75px;
 `;
 
-type HeaderProps = $ReadOnly<{|
+type CssProps = $ReadOnly<{|
   alignment: 'left' | 'right',
 |}>;
 
 const Header = styled.div`
-  margin-left: ${({ alignment }: HeaderProps) =>
+  margin-left: ${({ alignment }: CssProps) =>
     alignment === 'right' ? '70%' : 0};
 `;
-
-type BodyProps = $ReadOnly<{|
-  alignment: 'left' | 'right',
-|}>;
 
 const Body = styled.div`
   position: relative;
   display: flex;
-  flex-direction: ${({ alignment }: BodyProps) =>
+  flex-direction: ${({ alignment }: CssProps) =>
     alignment === 'right' ? 'row' : 'row-reverse'};
+`;
+
+const ImageContainer = styled.div`
+  max-width: 65%;
+  margin-right: ${({ alignment }: CssProps) =>
+    alignment === 'right' ? '5%' : 0};
+  margin-left: ${({ alignment }: CssProps) =>
+    alignment === 'left' ? '5%' : 0};
+  margin-top: -135px;
 
   img {
-    max-width: 65%;
-    margin-right: ${({ alignment }: BodyProps) =>
-      alignment === 'right' ? '5%' : 0};
-    margin-left: ${({ alignment }: BodyProps) =>
-      alignment === 'left' ? '5%' : 0};
-    margin-top: -135px;
+    max-width: 100%;
   }
-
-  p {
-    max-width: 30%;
-  }
+`;
+const Paragraph = styled.p`
+  max-width: 30%;
 `;
 
 type Content = {|
@@ -130,8 +131,14 @@ export default function Kit({ type, alignment }: Props): Node {
         </Heading>
       </Header>
       <Body alignment={alignment}>
-        <img src={image} alt={`${title} ${subtitle}`} />
-        <p>{text}</p>
+        <ImageContainer alignment={alignment}>
+          <LazyLoadImage
+            src={image}
+            alt={`${title} ${subtitle}`}
+            effect="blur"
+          />
+        </ImageContainer>
+        <Paragraph>{text}</Paragraph>
       </Body>
     </Container>
   );
