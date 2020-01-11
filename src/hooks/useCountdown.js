@@ -13,10 +13,10 @@ type TimeLeft = {|
 
 type State = {|
   end: string,
-  isFinished: boolean,
-  isStarted: boolean,
+  gbHasStarted: boolean,
   start: string,
   timeLeft: TimeLeft,
+  timerHasFinished: boolean,
   title: string,
 |};
 
@@ -30,11 +30,11 @@ type Args = $ReadOnly<{|
 |}>;
 
 const initialTimeLeft: TimeLeft = {
-  years: 0,
   days: 0,
   hours: 0,
   minutes: 0,
   seconds: 0,
+  years: 0,
 };
 
 function calculate(endDate: string): TimeLeft {
@@ -73,15 +73,15 @@ function calculate(endDate: string): TimeLeft {
 function reducer(state: State, action: Action) {
   switch (action.type) {
     case 'update-time': {
-      const isStarted = new Date(state.start) <= new Date();
-      const date = isStarted ? state.end : state.start;
-      const title = isStarted ? 'Groupbuy ends in' : 'Groupbuy starts in';
+      const gbHasStarted = new Date(state.start) <= new Date();
+      const date = gbHasStarted ? state.end : state.start;
+      const title = gbHasStarted ? 'Groupbuy ends in' : 'Groupbuy starts in';
       const timeLeft = calculate(date);
       return {
         ...state,
-        isFinished: isEmptyObject(timeLeft),
-        isStarted,
+        gbHasStarted,
         timeLeft,
+        timerHasFinished: isEmptyObject(timeLeft),
         title,
       };
     }
@@ -93,20 +93,20 @@ function reducer(state: State, action: Action) {
 export default function useCountdown({ start, end }: Args) {
   const [state, dispatch] = useReducer<State, Action, any>(reducer, {
     end,
-    isFinished: false,
-    isStarted: false,
+    gbHasStarted: false,
     start,
     timeLeft: initialTimeLeft,
+    timerHasFinished: false,
     title: '',
   });
-  const { isFinished, isStarted, timeLeft, title } = state;
+  const { gbHasStarted, timeLeft, timerHasFinished, title } = state;
 
   useEffect(() => {
     // For initial update of title and time left
     dispatch({ type: 'update-time' });
 
     const intervalId = setInterval(() => {
-      if (isFinished && isStarted) {
+      if (timerHasFinished && gbHasStarted) {
         clearInterval(intervalId);
       } else {
         dispatch({ type: 'update-time' });
@@ -114,7 +114,7 @@ export default function useCountdown({ start, end }: Args) {
     }, 1000);
 
     return () => clearInterval(intervalId);
-  }, [isFinished, isStarted, timeLeft, title]);
+  }, [gbHasStarted, timeLeft, timerHasFinished, title]);
 
   return [timeLeft, title];
 }
