@@ -50,11 +50,7 @@ type Props = $ReadOnly<{|
 |}>;
 
 function addLeadingZeros(value: number): string {
-  let result = String(value);
-  while (result.length < 2) {
-    result = `0${result}`;
-  }
-  return result;
+  return String(value).padStart(2, '0');
 }
 
 export default function Countdown({ start, end }: Props): Node {
