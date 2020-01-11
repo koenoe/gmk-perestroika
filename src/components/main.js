@@ -17,7 +17,7 @@ const Logo = styled.img`
 `;
 
 const Intro = styled.p`
-  margin: 0 auto;
+  margin: 0 auto 25px;
   max-width: 600px;
 `;
 
@@ -34,32 +34,16 @@ const Header = styled.div`
   margin-left: 28%;
 `;
 
-const Title = styled.h1`
-  text-align: center;
-  font-size: 20px;
-  margin-bottom: 10px;
-`;
-
-const Launch = styled.div`
-  margin: 0 auto 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
 const Container = styled.div`
   margin: auto;
-  max-width: 1600px;
+  max-width: 1400px;
 `;
 
 export default function Main(): Node {
   return (
     <>
       <Logo src={logoUrl} />
-      <Launch>
-        <Title>Groupbuy ends in</Title>
-        <Countdown date="2020-02-29T23:59:59" />
-      </Launch>
+      <Countdown start="2020-02-01T00:00:00" end="2020-02-29T23:59:59" />
       <IntroContainer>
         <Header>
           <Heading alignment="center">

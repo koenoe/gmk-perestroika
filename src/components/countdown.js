@@ -5,7 +5,8 @@ import styled from '@emotion/styled';
 import type { Node } from 'react';
 
 type Props = $ReadOnly<{|
-  date: string,
+  start: string,
+  end: string,
 |}>;
 
 type TimeLeft = {|
@@ -82,17 +83,30 @@ const Block = styled.div`
   text-align: right;
 `;
 
-const Title = styled.strong`
+const BlockTitle = styled.strong`
   font-size: 38px;
   line-height: 1;
 `;
 
-const Subtitle = styled.strong`
+const BlockSubtitle = styled.strong`
   font-size: 9px;
   line-height: 1;
 `;
 
-export default function Countdown({ date }: Props): Node {
+const Title = styled.h1`
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 10px;
+`;
+
+const Launch = styled.div`
+  margin: 0 auto 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export default function Countdown({ start, end }: Props): Node {
   const [timeLeft, setTimeLeft] = React.useState<TimeLeft>({
     years: 0,
     days: 0,
@@ -100,9 +114,18 @@ export default function Countdown({ date }: Props): Node {
     minutes: 0,
     seconds: 0,
   });
+  const [date, setDate] = React.useState<string>(start);
+  const [title, setTitle] = React.useState<string>('Groupbuy starts in');
 
   React.useEffect(() => {
     const intervalId = setInterval(() => {
+      if (new Date(date) <= new Date()) {
+        setDate(end);
+        setTitle('Groupbuy ends in');
+      } else {
+        setDate(start);
+        setTitle('Groupbuy starts in');
+      }
       const remainingTime = calculate(date);
       if (isFinished(remainingTime)) {
         clearInterval(intervalId);
@@ -115,26 +138,31 @@ export default function Countdown({ date }: Props): Node {
   }, [timeLeft]);
 
   return (
-    <Blocks>
-      <Block>
-        <Title>{addLeadingZeros(timeLeft.days)}</Title>
-        <Subtitle>{timeLeft.days === 1 ? 'Day' : 'Days'}</Subtitle>
-      </Block>
+    <Launch>
+      <Title>{title}</Title>
+      <Blocks>
+        <Block>
+          <BlockTitle>{addLeadingZeros(timeLeft.days)}</BlockTitle>
+          <BlockSubtitle>{timeLeft.days === 1 ? 'Day' : 'Days'}</BlockSubtitle>
+        </Block>
 
-      <Block>
-        <Title>{addLeadingZeros(timeLeft.hours)}</Title>
-        <Subtitle>{timeLeft.hours === 1 ? 'Hour' : 'Hours'}</Subtitle>
-      </Block>
+        <Block>
+          <BlockTitle>{addLeadingZeros(timeLeft.hours)}</BlockTitle>
+          <BlockSubtitle>
+            {timeLeft.hours === 1 ? 'Hour' : 'Hours'}
+          </BlockSubtitle>
+        </Block>
 
-      <Block>
-        <Title>{addLeadingZeros(timeLeft.minutes)}</Title>
-        <Subtitle>Min</Subtitle>
-      </Block>
+        <Block>
+          <BlockTitle>{addLeadingZeros(timeLeft.minutes)}</BlockTitle>
+          <BlockSubtitle>Min</BlockSubtitle>
+        </Block>
 
-      <Block>
-        <Title>{addLeadingZeros(timeLeft.seconds)}</Title>
-        <Subtitle>Sec</Subtitle>
-      </Block>
-    </Blocks>
+        <Block>
+          <BlockTitle>{addLeadingZeros(timeLeft.seconds)}</BlockTitle>
+          <BlockSubtitle>Sec</BlockSubtitle>
+        </Block>
+      </Blocks>
+    </Launch>
   );
 }
