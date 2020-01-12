@@ -36,6 +36,7 @@ module.exports = {
     'prettier/prettier': ['error', prettierOptions],
     'react/jsx-filename-extension': 0,
     'react/require-default-props': 0,
+    'jsx-a11y/click-events-have-key-events': 0,
   },
   settings: {
     'import/resolver': {

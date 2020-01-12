@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import Carousel, { Modal, ModalGateway } from 'react-images';
 
 import { Container } from 'components/contentBlocks.js';
 import shuffleArray from 'utils/shuffleArray.js';
@@ -24,37 +25,114 @@ import JangladThermalAngle from '../../img/janglad-thermal-angle.png';
 const Wrapper = styled(Container)`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+`;
 
-  > * {
+const Thumbnail = styled.div`
+  display: block;
+  cursor: zoom-in;
+  outline: none;
+
+  img {
     object-fit: cover;
+    display: block;
   }
 `;
 
-const images = [
-  Janglad268Angle,
-  Janglad268Top,
-  JangladHbcpTop,
-  JangladHbcpAngle,
-  JangladKira80Top,
-  JangladKira80Angle,
-  JangladMinitomicTop,
-  JangladMinitomicAngle,
-  JangladPolarisTop,
-  JangladPolarisAngle,
-  JangladThermalTop,
-  JangladThermalAngle,
+type Image = {|
+  caption: string,
+  source: string,
+|};
+
+const images: Array<Image> = [
+  {
+    caption: 'Noxary 268 by Xondat',
+    source: Janglad268Angle,
+  },
+  {
+    caption: 'Noxary 268 by Xondat',
+    source: Janglad268Top,
+  },
+  {
+    caption: 'HBCP by Hineybush',
+    source: JangladHbcpAngle,
+  },
+  {
+    caption: 'HBCP by Hineybush',
+    source: JangladHbcpTop,
+  },
+  {
+    caption: 'Kira80 by Thesiscamper',
+    source: JangladKira80Angle,
+  },
+  {
+    caption: 'Kira80 by Thesiscamper',
+    source: JangladKira80Top,
+  },
+  {
+    caption: 'Minitomic by Maarten',
+    source: JangladMinitomicAngle,
+  },
+  {
+    caption: 'Minitomic by Maarten',
+    source: JangladMinitomicTop,
+  },
+  {
+    caption: 'Polaris by ai03',
+    source: JangladPolarisAngle,
+  },
+  {
+    caption: 'Polaris by ai03',
+    source: JangladPolarisTop,
+  },
+  {
+    caption: 'Thermal by Wilba',
+    source: JangladThermalAngle,
+  },
+  {
+    caption: 'Thermal by Wilba',
+    source: JangladThermalTop,
+  },
 ];
 
 export default function Grid(): Node {
-  const [gallery, setGallery] = useState(images);
+  const [gallery, setGallery] = useState<Array<Image>>(images);
+  const [lightboxIsOpen, setLightboxIsOpen] = useState<boolean>(false);
+  const [selectedIndex, setSelectedIndex] = useState<number>(0);
+
+  const toggleLightbox = (index: number) => {
+    setSelectedIndex(index);
+    setLightboxIsOpen(!lightboxIsOpen);
+  };
+
   useEffect(() => {
     setGallery(shuffleArray(images));
   }, [images]);
+
   return (
-    <Wrapper>
-      {gallery.map(image => (
-        <LazyLoadImage src={image} key={image} alt="" />
-      ))}
-    </Wrapper>
+    <>
+      <Wrapper>
+        {gallery.map(({ caption, source }, index) => (
+          <Thumbnail
+            role="button"
+            tabIndex={index}
+            key={source}
+            onClick={() => toggleLightbox(index)}
+          >
+            <LazyLoadImage src={source} alt={caption} />
+          </Thumbnail>
+        ))}
+      </Wrapper>
+      <ModalGateway>
+        {lightboxIsOpen ? (
+          <Modal onClose={toggleLightbox}>
+            <Carousel
+              currentIndex={selectedIndex}
+              frameProps={{ autoSize: 'height' }}
+              views={gallery}
+            />
+          </Modal>
+        ) : null}
+      </ModalGateway>
+    </>
   );
 }
