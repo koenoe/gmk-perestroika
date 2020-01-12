@@ -1,6 +1,8 @@
 // @flow
 import React from 'react';
 import styled from '@emotion/styled';
+// $FlowFixMe
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 import type { Node } from 'react';
 
@@ -8,6 +10,7 @@ import Countdown from 'components/countdown.js';
 import Heading from 'components/heading.js';
 import Kit from 'components/kit.js';
 import Colors from 'components/colors.js';
+import Carousel from 'components/carousel.js';
 
 import logoUrl from '../../img/logo.svg';
 
@@ -71,6 +74,10 @@ export default function Main(): Node {
         <Kit type="unusual" alignment="right" />
         <Kit type="modern" alignment="left" />
         <Colors alignment="right" />
+      </Container>
+      <Container>
+        <H1>Renders</H1>
+        <Carousel />
       </Container>
     </>
   );
