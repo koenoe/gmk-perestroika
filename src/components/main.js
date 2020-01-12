@@ -7,6 +7,7 @@ import type { Node } from 'react';
 import Countdown from 'components/countdown.js';
 import Heading from 'components/heading.js';
 import Kit from 'components/kit.js';
+import Colors from 'components/colors.js';
 
 import logoUrl from '../../img/logo.svg';
 
@@ -39,6 +40,10 @@ const Container = styled.div`
   max-width: 1400px;
 `;
 
+const H1 = styled.h1`
+  opacity: 0.25;
+`;
+
 export default function Main(): Node {
   return (
     <>
@@ -60,10 +65,12 @@ export default function Main(): Node {
         </Intro>
       </IntroContainer>
       <Container>
+        <H1>Kits &amp; colors</H1>
         <Kit type="base" alignment="right" />
         <Kit type="usual" alignment="left" />
         <Kit type="unusual" alignment="right" />
         <Kit type="modern" alignment="left" />
+        <Colors alignment="right" />
       </Container>
     </>
   );

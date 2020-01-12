@@ -1,6 +1,5 @@
 // @flow
 import React from 'react';
-import styled from '@emotion/styled';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 // $FlowFixMe
 import 'react-lazy-load-image-component/src/effects/blur.css';
@@ -8,47 +7,18 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import type { Node } from 'react';
 
 import Heading from 'components/heading.js';
+import {
+  Body,
+  Container,
+  Header,
+  ImageContainer,
+  Paragraph,
+} from 'components/contentBlocks.js';
 
 import baseKitUrl from '../../img/base-kit.png';
 import usualKitUrl from '../../img/usual-kit.png';
 import unusualKitUrl from '../../img/unusual-kit.png';
 import modernKitUrl from '../../img/modern-kit.png';
-
-const Container = styled.div`
-  margin-bottom: 75px;
-`;
-
-type CssProps = $ReadOnly<{|
-  alignment: 'left' | 'right',
-|}>;
-
-const Header = styled.div`
-  margin-left: ${({ alignment }: CssProps) =>
-    alignment === 'right' ? '70%' : 0};
-`;
-
-const Body = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: ${({ alignment }: CssProps) =>
-    alignment === 'right' ? 'row' : 'row-reverse'};
-`;
-
-const ImageContainer = styled.div`
-  max-width: 65%;
-  margin-right: ${({ alignment }: CssProps) =>
-    alignment === 'right' ? '5%' : 0};
-  margin-left: ${({ alignment }: CssProps) =>
-    alignment === 'left' ? '5%' : 0};
-  margin-top: -135px;
-
-  img {
-    max-width: 100%;
-  }
-`;
-const Paragraph = styled.p`
-  max-width: 30%;
-`;
 
 type Content = {|
   title: string,
