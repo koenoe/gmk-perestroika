@@ -13,10 +13,10 @@ import {
   Paragraph,
 } from 'components/contentBlocks.js';
 
-import baseKitUrl from '../../img/base-kit.png';
-import usualKitUrl from '../../img/usual-kit.png';
-import unusualKitUrl from '../../img/unusual-kit.png';
-import modernKitUrl from '../../img/modern-kit.png';
+import baseKitUrl from '../../img/base-kit-without-title.png';
+import usualKitUrl from '../../img/usual-kit-without-title.png';
+import unusualKitUrl from '../../img/unusual-kit-without-title.png';
+import modernKitUrl from '../../img/modern-kit-without-title.png';
 
 type Content = {|
   title: string,
