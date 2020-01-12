@@ -52,6 +52,7 @@ const H1 = styled.h1`
   span {
     display: block;
     font-size: 12px;
+    font-weight: 700;
   }
 `;
 
