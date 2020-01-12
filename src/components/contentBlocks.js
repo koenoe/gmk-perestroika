@@ -7,6 +7,10 @@ type CssProps = $ReadOnly<{|
 
 export const Container = styled.div`
   margin-bottom: 75px;
+
+  img {
+    max-width: 100%;
+  }
 `;
 
 export const Header = styled.div`

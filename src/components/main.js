@@ -6,11 +6,12 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 
 import type { Node } from 'react';
 
+import Carousel from 'components/carousel.js';
+import Colors from 'components/colors.js';
 import Countdown from 'components/countdown.js';
+import Grid from 'components/grid.js';
 import Heading from 'components/heading.js';
 import Kit from 'components/kit.js';
-import Colors from 'components/colors.js';
-import Carousel from 'components/carousel.js';
 
 import logoUrl from '../../img/logo.svg';
 
@@ -45,6 +46,13 @@ const Container = styled.div`
 
 const H1 = styled.h1`
   opacity: 0.25;
+  line-height: 1.2;
+  margin-bottom: 25px;
+
+  span {
+    display: block;
+    font-size: 12px;
+  }
 `;
 
 export default function Main(): Node {
@@ -76,8 +84,16 @@ export default function Main(): Node {
         <Colors alignment="right" />
       </Container>
       <Container>
-        <H1>Renders</H1>
+        <H1>
+          Renders <span>by MacSurfy</span>
+        </H1>
         <Carousel />
+      </Container>
+      <Container>
+        <H1>
+          Renders <span>by Janglad</span>
+        </H1>
+        <Grid />
       </Container>
     </>
   );

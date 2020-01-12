@@ -114,7 +114,7 @@ export default function useCountdown({ start, end }: Args) {
     }, 1000);
 
     return () => clearInterval(intervalId);
-  }, [gbHasStarted, timeLeft, timerHasFinished, title]);
+  }, [gbHasStarted, timeLeft, timerHasFinished]);
 
   return [timeLeft, title];
 }

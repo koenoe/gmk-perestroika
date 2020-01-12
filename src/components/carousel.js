@@ -1,20 +1,16 @@
 // @flow
 import React from 'react';
-import styled from '@emotion/styled';
+// import styled from '@emotion/styled';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import type { Node } from 'react';
+
+import { Container } from 'components/contentBlocks.js';
 
 import concrete910 from '../../img/concrete-910.png';
 // import concreteBauer from '../../img/concrete-bauer.png';
 // import concreteOGR from '../../img/concrete-ogr.png';
 // import concreteProphet from '../../img/concrete-prophet.png';
-
-const Container = styled.div`
-  img {
-    max-width: 100%;
-  }
-`;
 
 export default function Carousel(): Node {
   return (
