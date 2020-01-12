@@ -18,7 +18,7 @@
     "prebuild": "yarn lint && yarn clean-dist",
     "serve": "webpack-dev-server --port 3000 --config ./webpack/config.dev.js --log-level error --hot --history-api-fallback --disable-host-check",
     "start": "yarn serve",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "test:cover": "yarn test --coverage",
     "test:coveralls": "yarn test:cover && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
     "test:watch": "yarn test --watch"
