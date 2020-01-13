@@ -1,7 +1,7 @@
 // @flow
 import React, { useState, useRef, useEffect } from 'react';
 import styled from '@emotion/styled';
-// import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { debounce } from 'lodash';
 
 import type { Node } from 'react';
@@ -38,11 +38,11 @@ const Before = styled.div`
   width: 50%;
 `;
 
-const BeforeImage = styled.img`
+const BeforeImage = styled(LazyLoadImage)`
   max-width: none;
 `;
 
-const AfterImage = styled.img`
+const AfterImage = styled(LazyLoadImage)`
   display: block;
   width: 100%;
   max-width: 100%;
