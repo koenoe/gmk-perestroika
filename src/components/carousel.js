@@ -14,6 +14,7 @@ import concreteProphet from '../../img/concrete-prophet.png';
 import officeBauer from '../../img/office-bauer.png';
 import officeNoxary280 from '../../img/office-noxary280.png';
 import officeLynxL50 from '../../img/office-lynxl50.png';
+import officeProphet from '../../img/office-prophet.png';
 
 type Image = {|
   src: string,
@@ -30,9 +31,10 @@ const images: Array<Image> = [
   { src: concreteBauer },
   { src: concreteOGR },
   { src: concreteProphet },
-  { src: officeBauer },
   { src: officeNoxary280 },
+  { src: officeBauer },
   { src: officeLynxL50 },
+  { src: officeProphet },
 ];
 
 export default function Carousel(): Node {
