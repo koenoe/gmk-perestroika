@@ -21,7 +21,25 @@ type Fonts = $ReadOnly<{|
 export type Theme = $ReadOnly<{|
   colors: Colors,
   fonts: Fonts,
+  media: any,
 |}>;
+
+const breakpoints = {
+  xxl: 1600,
+  xl: 1200,
+  l: 992,
+  m: 768,
+  s: 576,
+};
+
+const media = Object.keys(breakpoints).reduce((acc, label) => {
+  acc[label] = (...args) => css`
+    @media (min-width: ${breakpoints[label]}px) {
+      ${css(...args)};
+    }
+  `;
+  return acc;
+}, {});
 
 const theme: Theme = {
   colors: {
@@ -32,6 +50,7 @@ const theme: Theme = {
     primary: "'Lora', serif",
     secondary: "'Montserrat', serif",
   },
+  media,
 };
 
 export default function App(): Node {

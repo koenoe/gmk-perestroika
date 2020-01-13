@@ -22,24 +22,61 @@ type CssProps = $ReadOnly<{|
   theme: Theme,
 |}>;
 
+const Layout = styled.div`
+  margin: auto;
+  max-width: 375px;
+  padding: 15px;
+  box-sizing: border-box;
+
+  ${({ theme }) => theme.media.s`
+    max-width: 576px;
+  `}
+
+  ${({ theme }) => theme.media.m`
+    max-width: 768px;
+    padding: 25px;
+  `}
+
+  ${({ theme }) => theme.media.l`
+    max-width: 992px;
+  `}
+
+  ${({ theme }) => theme.media.xl`
+    max-width: 1200px;
+  `}
+
+  ${({ theme }) => theme.media.xxl`
+    max-width: 1600px;
+  `}
+`;
+
 const Logo = styled.img`
-  margin: 100px auto 50px;
-  max-width: 600px;
+  margin: 50px auto;
   display: block;
+  max-width: 100%;
+
+  ${({ theme }) => theme.media.l`
+    margin-top: 100px;
+    max-width: 50%;
+  `}
 `;
 
 const Intro = styled.p`
   margin: 0 auto 25px;
-  max-width: 600px;
+  max-width: 80%;
 `;
 
 const IntroContainer = styled.div`
   margin: 0 auto 100px;
-  max-width: 800px;
   color: ${({ theme }: CssProps) => theme.colors.red};
   background: ${({ theme }: CssProps) => theme.colors.cream};
   padding: 25px 0;
   box-sizing: border-box;
+  max-width: 100%;
+
+  ${({ theme }) => theme.media.l`
+    max-width: 50%;
+  `}
 `;
 
 const Header = styled.div`
@@ -48,7 +85,6 @@ const Header = styled.div`
 
 const Container = styled.div`
   margin: auto;
-  max-width: 1400px;
 `;
 
 const H1 = styled.h1`
@@ -65,7 +101,7 @@ const H1 = styled.h1`
 
 export default function Main(): Node {
   return (
-    <>
+    <Layout>
       <Logo src={logoUrl} />
       <Countdown start="2020-02-01T00:00:00" end="2020-02-29T23:59:59" />
       <IntroContainer>
@@ -109,6 +145,6 @@ export default function Main(): Node {
         </H1>
         <Cocoen />
       </Container>
-    </>
+    </Layout>
   );
 }

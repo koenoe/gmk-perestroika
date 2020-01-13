@@ -21,9 +21,18 @@ const Block = styled.div`
   flex-direction: column;
   color: ${(props: CssProps) => props.theme.colors.red};
   background: ${(props: CssProps) => props.theme.colors.cream};
-  width: 50px;
+  width: 79px;
   padding: 10px 15px;
   text-align: right;
+  box-sizing: border-box;
+
+  &:first-of-type {
+    margin-left: 0;
+  }
+
+  &:last-of-type {
+    margin-right: 0;
+  }
 `;
 
 const BlockTitle = styled.strong`
