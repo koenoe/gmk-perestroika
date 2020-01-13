@@ -1,20 +1,19 @@
 // @flow
-import React, { useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from '@emotion/styled';
 // import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { debounce } from 'lodash';
 
 import type { Node } from 'react';
-
-import { Container } from 'components/contentBlocks.js';
 
 import beforeUrl from '../../img/office-prophet.png';
 import afterUrl from '../../img/office-prophet-night.png';
 
-const Wrapper = styled.div`
+const Container = styled.div`
   box-sizing: border-box;
   cursor: pointer;
   line-height: 0;
-  margin: 0;
+  margin: 0 auto 75px;
   overflow: hidden;
   padding: 0;
   position: relative;
@@ -28,32 +27,29 @@ const Wrapper = styled.div`
       box-sizing: inherit;
     }
   }
+`;
 
-  img,
-  picture > img {
-    max-width: none;
-  }
+const Before = styled.div`
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 50%;
+`;
 
-  > img,
-  > picture > img {
-    display: block;
-    width: 100%;
-  }
+const BeforeImage = styled.img`
+  max-width: none;
+`;
 
-  > div {
-    &:first-of-type,
-    picture & {
-      height: 100%;
-      left: 0;
-      overflow: hidden;
-      position: absolute;
-      top: 0;
-      width: 50%;
-    }
+const AfterImage = styled.img`
+  display: block;
+  width: 100%;
+  max-width: 100%;
 `;
 
 const Drag = styled.span`
-  background: #fff;
+  background: #e9e0d2;
   bottom: 0;
   cursor: ew-resize;
   left: 50%;
@@ -63,7 +59,7 @@ const Drag = styled.span`
   width: 2px;
 
   &:before {
-    border: 3px solid #fff;
+    border: 3px solid #e9e0d2;
     content: '';
     height: 30px;
     left: 50%;
@@ -75,40 +71,62 @@ const Drag = styled.span`
   }
 `;
 
-// import concrete910 from '../../img/concrete-910.png';
-// import concreteBauer from '../../img/concrete-bauer.png';
-// import concreteOGR from '../../img/concrete-ogr.png';
-// import concreteProphet from '../../img/concrete-prophet.png';
-
 export default function Cocoen(): Node {
   const ref = useRef();
+  const dragRef = useRef();
+
+  const [elementWidth, setElementWidth] = useState<number>(0);
+  const [dragElementWidth, setDragElementWidth] = useState<number>(0);
+  const [openRatio, setOpenRatio] = useState<string>('25%');
+
+  const calculateOpenRatio = (x: number): string => {
+    let ratio = x + dragElementWidth / 2;
+    ratio /= elementWidth;
+    return `${ratio * 100}%`;
+  };
+
+  const handleClick = e => {
+    e.preventDefault();
+
+    const clientX = e.clientX ? e.clientX : e.touches[0].clientX;
+    const clickX = clientX - e.target.getBoundingClientRect().left;
+
+    setOpenRatio(calculateOpenRatio(clickX));
+  };
+
+  const updateDimensions = () => {
+    if (ref.current) {
+      setElementWidth(parseInt(window.getComputedStyle(ref.current).width, 10));
+      setDragElementWidth(
+        parseInt(window.getComputedStyle(dragRef.current).width, 10),
+      );
+    }
+  };
 
   useEffect(() => {
-    if (!ref.current) {
-      return;
-    }
-
-    ref.current.addEventListener('click', () => {});
-
-    // eslint-disable-next-line consistent-return
+    const debouncedUpdateDimensions = debounce(updateDimensions, 250);
+    window.addEventListener('resize', debouncedUpdateDimensions);
     return () => {
-      if (!ref.current) {
-        return;
-      }
-
-      ref.current.removeEventListener('click', () => {});
+      window.removeEventListener('resize', debouncedUpdateDimensions);
     };
   }, []);
 
+  useEffect(() => {
+    updateDimensions();
+  }, []);
+
   return (
-    <Container>
-      <Wrapper ref={ref}>
-        <div>
-          <img src={beforeUrl} alt="" />
-          <img src={afterUrl} alt="" />
-        </div>
-        <Drag />
-      </Wrapper>
+    <Container onClick={handleClick} ref={ref}>
+      <Before style={{ width: openRatio }}>
+        <BeforeImage
+          src={beforeUrl}
+          alt=""
+          style={{ width: elementWidth }}
+          draggable={false}
+        />
+      </Before>
+      <AfterImage src={afterUrl} alt="" draggable={false} />
+      <Drag ref={dragRef} style={{ left: openRatio }} />
     </Container>
   );
 }

@@ -6,6 +6,7 @@ const resolveRelative = file => path.resolve(__dirname, file);
 
 const babelPlugins = [
   'emotion',
+  'lodash',
   '@babel/plugin-transform-async-to-generator',
   '@babel/plugin-syntax-dynamic-import',
   '@babel/plugin-proposal-object-rest-spread',
