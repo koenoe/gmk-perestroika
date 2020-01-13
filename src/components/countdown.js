@@ -3,8 +3,13 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 import useCountdown from 'hooks/useCountdown.js';
+import type { Theme } from 'components/app.js';
 
 import type { Node } from 'react';
+
+type CssProps = $ReadOnly<{|
+  theme: Theme,
+|}>;
 
 const Blocks = styled.div`
   display: flex;
@@ -14,8 +19,8 @@ const Block = styled.div`
   margin: 0 5px;
   display: flex;
   flex-direction: column;
-  color: #59191f;
-  background: #e9e0d2;
+  color: ${(props: CssProps) => props.theme.colors.red};
+  background: ${(props: CssProps) => props.theme.colors.cream};
   width: 50px;
   padding: 10px 15px;
   text-align: right;

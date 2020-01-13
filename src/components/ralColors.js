@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 
 import type { Node } from 'react';
 
+import type { Theme } from 'components/app.js';
 import Heading from 'components/heading.js';
 import {
   Body,
@@ -12,6 +13,10 @@ import {
   ImageContainer,
   Paragraph,
 } from 'components/contentBlocks.js';
+
+type CssProps = $ReadOnly<{|
+  theme: Theme,
+|}>;
 
 const RalContainer = styled(ImageContainer)`
   display: flex;
@@ -34,22 +39,22 @@ const Ral = styled.div`
 `;
 
 const Ral3005 = styled(Ral)`
-  background: #59191f;
-  border: 10px solid #e9e0d2;
-  color: #e9e0d2;
+  background: ${(props: CssProps) => props.theme.colors.red};
+  border: 10px solid ${(props: CssProps) => props.theme.colors.cream};
+  color: ${(props: CssProps) => props.theme.colors.cream};
 `;
 
 const Ral9001 = styled(Ral)`
-  background: #e9e0d2;
-  border: 10px solid #59191f;
-  color: #59191f;
+  background: ${(props: CssProps) => props.theme.colors.cream};
+  border: 10px solid ${(props: CssProps) => props.theme.colors.red};
+  color: ${(props: CssProps) => props.theme.colors.red};
 `;
 
 type Props = $ReadOnly<{|
   alignment: 'left' | 'right',
 |}>;
 
-export default function Colors({ alignment }: Props): Node {
+export default function RalColors({ alignment }: Props): Node {
   return (
     <Container>
       <Header alignment={alignment}>
