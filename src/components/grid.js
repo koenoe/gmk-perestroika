@@ -28,7 +28,7 @@ const Wrapper = styled(Container)`
 `;
 
 const Thumbnail = styled.div`
-  display: block;
+  display: inherit;
   cursor: zoom-in;
   outline: none;
 
@@ -118,7 +118,7 @@ export default function Grid(): Node {
             key={source}
             onClick={() => toggleLightbox(index)}
           >
-            <LazyLoadImage src={source} alt={caption} />
+            <LazyLoadImage src={source} alt={caption} effect="blur" />
           </Thumbnail>
         ))}
       </Wrapper>
