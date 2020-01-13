@@ -7,6 +7,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import type { Node } from 'react';
 
 import Carousel from 'components/carousel.js';
+import Cocoen from 'components/cocoen.js';
 import Colors from 'components/colors.js';
 import Countdown from 'components/countdown.js';
 import Grid from 'components/grid.js';
@@ -95,6 +96,12 @@ export default function Main(): Node {
           Renders <span>by Janglad</span>
         </H1>
         <Grid />
+      </Container>
+      <Container>
+        <H1>
+          Lighting <span>day and night</span>
+        </H1>
+        <Cocoen />
       </Container>
     </>
   );
