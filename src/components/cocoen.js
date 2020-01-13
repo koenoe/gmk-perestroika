@@ -77,7 +77,7 @@ export default function Cocoen(): Node {
 
   const [elementWidth, setElementWidth] = useState<number>(0);
   const [dragElementWidth, setDragElementWidth] = useState<number>(0);
-  const [openRatio, setOpenRatio] = useState<string>('25%');
+  const [openRatio, setOpenRatio] = useState<string>('50%');
 
   const calculateOpenRatio = (x: number): string => {
     let ratio = x + dragElementWidth / 2;
