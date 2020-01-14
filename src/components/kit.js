@@ -1,9 +1,7 @@
 // @flow
 import React from 'react';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-
+import LazyLoad from 'react-lazyload';
 import type { Node } from 'react';
-
 import Heading from 'components/heading.js';
 import {
   Body,
@@ -12,6 +10,7 @@ import {
   ImageContainer,
   Text,
 } from 'components/contentBlocks.js';
+import Image from 'components/image.js';
 
 import baseKitUrl from '../../img/base-kit-without-title.png';
 import usualKitUrl from '../../img/usual-kit-without-title.png';
@@ -130,11 +129,9 @@ export default function Kit({ type, alignment }: Props): Node {
       </Header>
       <Body alignment={alignment}>
         <ImageContainer alignment={alignment}>
-          <LazyLoadImage
-            src={image}
-            alt={`${title} ${subtitle}`}
-            effect="blur"
-          />
+          <LazyLoad height={200} offset={100}>
+            <Image fadeIn src={image} alt={`${title} ${subtitle}`} />
+          </LazyLoad>
         </ImageContainer>
         <Text>{text}</Text>
       </Body>
