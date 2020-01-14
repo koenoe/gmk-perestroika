@@ -25,6 +25,10 @@ export const Header = styled.div`
   ${({ theme, alignment }: CssProps) => theme.media.l`
     margin-left: ${alignment === 'right' ? '70%' : 0};
   `}
+
+  ${({ theme, alignment }: CssProps) => theme.media.xxl`
+    margin-left: ${alignment === 'right' ? '80%' : 0};
+  `}
 `;
 
 export const Body = styled.div`
@@ -52,6 +56,10 @@ export const ImageContainer = styled.div`
     margin-left: ${alignment === 'left' ? '5%' : 0};
     margin-bottom: 0;
   `}
+
+  ${({ theme }: CssProps) => theme.media.xxl`
+    width: 75%;
+  `}
 `;
 
 export const Text = styled.div`
@@ -63,5 +71,9 @@ export const Text = styled.div`
 
   ${({ theme }: CssProps) => theme.media.l`
     width: 30%;
+  `}
+
+  ${({ theme }: CssProps) => theme.media.xxl`
+    width: 20%;
   `}
 `;
