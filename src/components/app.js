@@ -5,6 +5,7 @@ import emotionNormalize from 'emotion-normalize';
 import { ThemeProvider } from 'emotion-theming';
 
 import Main from 'components/main.js';
+import GDPR from 'components/gdpr.js';
 
 import type { Node } from 'react';
 
@@ -89,6 +90,7 @@ export default function App(): Node {
         `}
       />
       <Main />
+      <GDPR />
     </ThemeProvider>
   );
 }
