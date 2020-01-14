@@ -11,7 +11,7 @@ import {
   Container,
   Header,
   ImageContainer,
-  Paragraph,
+  Text,
 } from 'components/contentBlocks.js';
 
 type CssProps = $ReadOnly<{|
@@ -71,11 +71,18 @@ export default function RalColors({ alignment }: Props): Node {
             <strong>RAL 9001 - Cream</strong>
           </Ral9001>
         </RalContainer>
-        <Paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec quam
-          consequat, ornare ligula vitae, mollis elit. Duis hendrerit maximus
-          sagittis. Suspendisse ac auctor est.
-        </Paragraph>
+        <Text>
+          <p>The colours speak from themselves - a rich Wine Red and Cream.</p>
+          <p>
+            If you want to get creative about it; try imagining a bowl of
+            steaming Borscht soup, vibrant red, with a dollop of sour cream on
+            top. Mmm.
+          </p>
+          <p>
+            A colour-match made in heaven and sure to look great on a variety of
+            keyboards.
+          </p>
+        </Text>
       </Body>
     </Container>
   );

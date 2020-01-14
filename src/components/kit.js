@@ -10,7 +10,7 @@ import {
   Container,
   Header,
   ImageContainer,
-  Paragraph,
+  Text,
 } from 'components/contentBlocks.js';
 
 import baseKitUrl from '../../img/base-kit-without-title.png';
@@ -22,7 +22,7 @@ type Content = {|
   title: string,
   subtitle: string,
   image: string,
-  text: string,
+  text: Node,
 |};
 
 function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
@@ -32,44 +32,74 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
         title: 'Base kit',
         subtitle: 'Базовый набор',
         image: baseKitUrl,
-        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec quam
-        consequat, ornare ligula vitae, mollis elit. Duis hendrerit maximus
-        sagittis. Suspendisse ac auctor est. Aenean commodo sagittis leo, ac
-        vestibulum mi efficitur in. Mauris euismod purus lacus, a eleifend
-        elit porta non. Nullam nec vehicula sem.`,
+        text: (
+          <>
+            <p>
+              The blend of beautiful Cyrillic and English characters is unique
+              and symbolises the two-way thinking that made room for a new way
+              of life in Russia. Just maybe, the kit could inspire you to try a
+              new way of working.
+            </p>
+            <p>
+              This kit is large and includes numpad support and ISO support,
+              making it a great choice for a variety of layouts.
+            </p>
+          </>
+        ),
       };
     case 'usual':
       return {
         title: 'Usual kit',
         subtitle: 'Обычный набор',
         image: usualKitUrl,
-        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec quam
-          consequat, ornare ligula vitae, mollis elit. Duis hendrerit maximus
-          sagittis. Suspendisse ac auctor est. Aenean commodo sagittis leo, ac
-          vestibulum mi efficitur in. Mauris euismod purus lacus, a eleifend
-          elit porta non. Nullam nec vehicula sem.`,
+        text: (
+          <>
+            <p>
+              Not feeling the Cyrillics? Have no fear, you can convert the kit
+              to be fully English (US/UK). Just like Gorbachev, the board
+              strives to provide for the masses.
+            </p>
+            <p>
+              During the interest check, it was clear that it would be
+              beneficial to create this, and so it’s ultimately the community’s
+              kit.
+            </p>
+          </>
+        ),
       };
     case 'unusual':
       return {
         title: 'Unusual kit',
         subtitle: 'Необычный набор',
         image: unusualKitUrl,
-        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec quam
-          consequat, ornare ligula vitae, mollis elit. Duis hendrerit maximus
-          sagittis. Suspendisse ac auctor est. Aenean commodo sagittis leo, ac
-          vestibulum mi efficitur in. Mauris euismod purus lacus, a eleifend
-          elit porta non. Nullam nec vehicula sem.`,
+        text: (
+          <>
+            <p>
+              For those among us who don’t fit the mould - this kit is for you.
+              It covers the more unusual layouts, such as 40% and split.
+            </p>
+            <p>
+              After all, some of history’s greatest milestones were achieved by
+              folks who did things a little differently.
+            </p>
+          </>
+        ),
       };
     case 'modern':
       return {
         title: 'Modern kit',
         subtitle: 'Современный набор',
         image: modernKitUrl,
-        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc nec quam
-          consequat, ornare ligula vitae, mollis elit. Duis hendrerit maximus
-          sagittis. Suspendisse ac auctor est. Aenean commodo sagittis leo, ac
-          vestibulum mi efficitur in. Mauris euismod purus lacus, a eleifend
-          elit porta non. Nullam nec vehicula sem.`,
+        text: (
+          <>
+            <p>
+              For the people who want it even more modern than the base kit. The
+              Modern Kit covers a 60% keyboard layout to achieve a smart uniform
+              look without the use of English legends.
+            </p>
+            <p>Forward-thinkers, we salute you.</p>
+          </>
+        ),
       };
     default:
       return {
@@ -106,7 +136,7 @@ export default function Kit({ type, alignment }: Props): Node {
             effect="blur"
           />
         </ImageContainer>
-        <Paragraph>{text}</Paragraph>
+        <Text>{text}</Text>
       </Body>
     </Container>
   );

@@ -38,6 +38,10 @@ export const ImageContainer = styled.div`
   }
 `;
 
-export const Paragraph = styled.p`
+export const Text = styled.div`
   width: 30%;
+
+  p {
+    margin: 0 0 25px;
+  }
 `;
