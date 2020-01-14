@@ -60,7 +60,7 @@ export default function RalColors({ alignment }: Props): Node {
     <Container>
       <Header alignment={alignment}>
         <Heading alignment={alignment}>
-          <h2>Colors</h2>
+          <h2>Colours</h2>
         </Heading>
       </Header>
       <Body alignment={alignment}>

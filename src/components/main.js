@@ -128,7 +128,7 @@ export default function Main(): Node {
         </Intro>
       </IntroContainer>
       <Container>
-        <H1>Kits &amp; colors</H1>
+        <H1>Kits &amp; colours</H1>
         <Kit type="base" alignment="right" />
         <Kit type="usual" alignment="left" />
         <Kit type="unusual" alignment="right" />
