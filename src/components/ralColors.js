@@ -28,6 +28,7 @@ const Ral = styled.div`
   width: 50%;
   align-items: center;
   justify-content: center;
+  text-align: center;
   cursor: default;
   user-select: none;
 
