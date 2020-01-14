@@ -81,7 +81,14 @@ export default function Cocoen(): Node {
   const [x, setX] = useState<number>(0);
   const [openRatio, setOpenRatio] = useState<string>('50%');
 
-  const calculateOpenRatio = (value: number): string => {
+  const calculateOpenRatio = (activeX: number): string => {
+    let value = activeX;
+    if (activeX < 0) {
+      value = dragElementWidth;
+    } else if (activeX >= elementWidth) {
+      value = elementWidth - dragElementWidth;
+    }
+
     let ratio = value + dragElementWidth / 2;
     ratio /= elementWidth;
     return `${ratio * 100}%`;
@@ -100,8 +107,7 @@ export default function Cocoen(): Node {
       return;
     }
 
-    const clientX = e.clientX ? e.clientX : e.touches[0].clientX;
-    setX(clientX);
+    setX(e.clientX ? e.clientX : e.touches[0].clientX);
   };
 
   const onDragEnd = e => {
@@ -129,6 +135,7 @@ export default function Cocoen(): Node {
     if (!x) {
       return;
     }
+
     window.requestAnimationFrame(() => {
       setOpenRatio(calculateOpenRatio(x));
     });

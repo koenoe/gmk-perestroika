@@ -8,6 +8,7 @@ import { Container } from 'components/contentBlocks.js';
 import shuffleArray from 'utils/shuffleArray.js';
 
 import type { Node } from 'react';
+import type { Theme } from 'components/app.js';
 
 import Janglad268Angle from '../../img/janglad-268-angle.png';
 import Janglad268Top from '../../img/janglad-268-top.png';
@@ -22,9 +23,21 @@ import JangladPolarisAngle from '../../img/janglad-polaris-angle.png';
 import JangladThermalTop from '../../img/janglad-thermal-top.png';
 import JangladThermalAngle from '../../img/janglad-thermal-angle.png';
 
+type CssProps = $ReadOnly<{|
+  theme: Theme,
+|}>;
+
 const Wrapper = styled(Container)`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+
+  ${({ theme }: CssProps) => theme.media.m`
+    grid-template-columns: repeat(3, 1fr);
+  `}
+
+  ${({ theme }: CssProps) => theme.media.l`
+    grid-template-columns: repeat(4, 1fr);
+  `}
 `;
 
 const Thumbnail = styled.div`
