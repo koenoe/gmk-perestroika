@@ -1,14 +1,15 @@
 // @flow
 import React, { useEffect, useState } from 'react';
-import styled from '@emotion/styled';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import Carousel, { Modal, ModalGateway } from 'react-images';
+import type { Node } from 'react';
 
+import styled from '@emotion/styled';
+import LazyLoad from 'react-lazyload';
+import Carousel, { Modal, ModalGateway } from 'react-images';
 import { Container } from 'components/contentBlocks.js';
 import shuffleArray from 'utils/shuffleArray.js';
-
-import type { Node } from 'react';
 import type { Theme } from 'components/app.js';
+
+import Image from 'components/image.js';
 
 import Janglad268Angle from '../../img/janglad-268-angle.png';
 import Janglad268Top from '../../img/janglad-268-top.png';
@@ -51,12 +52,12 @@ const Thumbnail = styled.div`
   }
 `;
 
-type Image = {|
+type GridImage = {|
   caption: string,
   source: string,
 |};
 
-const images: Array<Image> = [
+const images: Array<GridImage> = [
   {
     caption: 'Noxary 268 by Xondat',
     source: Janglad268Angle,
@@ -107,11 +108,10 @@ const images: Array<Image> = [
   },
 ];
 
-export default function Grid(): Node {
+const Grid = (): Node => {
   const [gallery, setGallery] = useState<Array<Image>>(images);
   const [lightboxIsOpen, setLightboxIsOpen] = useState<boolean>(false);
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
-
   const toggleLightbox = (index: number) => {
     setSelectedIndex(index);
     setLightboxIsOpen(!lightboxIsOpen);
@@ -131,7 +131,9 @@ export default function Grid(): Node {
             key={source}
             onClick={() => toggleLightbox(index)}
           >
-            <LazyLoadImage src={source} alt={caption} effect="blur" />
+            <LazyLoad height={200} offset={100}>
+              <Image fadeIn src={source} alt={caption} />
+            </LazyLoad>
           </Thumbnail>
         ))}
       </Wrapper>
@@ -148,4 +150,6 @@ export default function Grid(): Node {
       </ModalGateway>
     </>
   );
-}
+};
+
+export default Grid;

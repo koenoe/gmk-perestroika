@@ -2,9 +2,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-// $FlowFixMe
-import 'react-lazy-load-image-component/src/effects/blur.css';
-
 import type { Node } from 'react';
 
 import Carousel from 'components/carousel.js';

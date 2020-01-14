@@ -1,11 +1,11 @@
 // @flow
 import React from 'react';
-// import styled from '@emotion/styled';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+import LazyLoad from 'react-lazyload';
 import ReactImagesCarousel from 'react-images';
 import type { Node } from 'react';
 
 import { Container } from 'components/contentBlocks.js';
+import Image from 'components/image.js';
 
 import concrete910 from '../../img/concrete-910.png';
 import concreteBauer from '../../img/concrete-bauer.png';
@@ -17,7 +17,7 @@ import officeNoxary280 from '../../img/office-noxary280.png';
 import officeLynxL50 from '../../img/office-lynxl50.png';
 import officeProphet from '../../img/office-prophet.png';
 
-type Image = {|
+type CarouselImage = {|
   source: string,
   caption: string,
 |};
@@ -34,12 +34,16 @@ const images: Array<Image> = [
 ];
 
 type ViewProps = $ReadOnly<{|
-  data: Image,
+  data: CarouselImage,
 |}>;
 
 function View(props: ViewProps): Node {
   const { data } = props;
-  return <LazyLoadImage src={data.source} alt={data.caption} effect="blur" />;
+  return (
+    <LazyLoad height={200} offset={100}>
+      <Image fadeIn src={data.source} alt={data.caption} />{' '}
+    </LazyLoad>
+  );
 }
 
 export default function Carousel(): Node {
