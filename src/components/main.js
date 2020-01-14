@@ -75,12 +75,20 @@ const IntroContainer = styled.div`
   max-width: 100%;
 
   ${({ theme }) => theme.media.l`
-    max-width: 50%;
+    max-width: 70%;
+  `}
+
+  ${({ theme }) => theme.media.xl`
+    max-width: 60%;
   `}
 `;
 
 const Header = styled.div`
-  margin-left: 28%;
+  margin-left: 9%;
+
+  ${({ theme }) => theme.media.m`
+    margin-left: 28%;
+  `}
 `;
 
 const Container = styled.div`

@@ -3,10 +3,12 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 import type { Node } from 'react';
+import type { Theme } from 'components/app.js';
 
 type HeaderProps = $ReadOnly<{|
   textLength: string,
   alignment: 'left' | 'right' | 'center',
+  theme: Theme,
 |}>;
 
 const Header: any = styled.header`
@@ -45,7 +47,11 @@ const Header: any = styled.header`
   }
 
   h1, h2 {
-    font-size: 34px;
+    font-size: 28px;
+
+    ${({ theme }) => theme.media.m`
+      font-size: 34px;
+    `}
   }
 `;
 
