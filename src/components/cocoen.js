@@ -75,27 +75,49 @@ export default function Cocoen(): Node {
   const ref = useRef();
   const dragRef = useRef();
 
+  const [isDragging, setIsDragging] = useState<boolean>(false);
   const [elementWidth, setElementWidth] = useState<number>(0);
   const [dragElementWidth, setDragElementWidth] = useState<number>(0);
+  const [x, setX] = useState<number>(0);
   const [openRatio, setOpenRatio] = useState<string>('50%');
 
-  const calculateOpenRatio = (x: number): string => {
-    let ratio = x + dragElementWidth / 2;
+  const calculateOpenRatio = (value: number): string => {
+    let ratio = value + dragElementWidth / 2;
     ratio /= elementWidth;
     return `${ratio * 100}%`;
   };
 
-  const handleClick = e => {
+  const onDragStart = e => {
+    e.preventDefault();
+
+    setIsDragging(true);
+  };
+
+  const onDrag = e => {
+    e.preventDefault();
+
+    if (!isDragging) {
+      return;
+    }
+
+    const clientX = e.clientX ? e.clientX : e.touches[0].clientX;
+    setX(clientX);
+  };
+
+  const onDragEnd = e => {
+    e.preventDefault();
+    setIsDragging(false);
+  };
+
+  const onClick = e => {
     e.preventDefault();
 
     const clientX = e.clientX ? e.clientX : e.touches[0].clientX;
-    const clickX = clientX - e.target.getBoundingClientRect().left;
-
-    setOpenRatio(calculateOpenRatio(clickX));
+    setX(clientX - e.target.getBoundingClientRect().left);
   };
 
   const updateDimensions = () => {
-    if (ref.current) {
+    if (ref.current && dragRef.current) {
       setElementWidth(parseInt(window.getComputedStyle(ref.current).width, 10));
       setDragElementWidth(
         parseInt(window.getComputedStyle(dragRef.current).width, 10),
@@ -104,10 +126,23 @@ export default function Cocoen(): Node {
   };
 
   useEffect(() => {
+    if (!x) {
+      return;
+    }
+    window.requestAnimationFrame(() => {
+      setOpenRatio(calculateOpenRatio(x));
+    });
+  }, [x]);
+
+  useEffect(() => {
     const debouncedUpdateDimensions = debounce(updateDimensions, 250);
     window.addEventListener('resize', debouncedUpdateDimensions);
+    window.addEventListener('mouseup', onDragEnd);
+    window.addEventListener('touchend', onDragEnd);
     return () => {
       window.removeEventListener('resize', debouncedUpdateDimensions);
+      window.removeEventListener('mouseup', onDragEnd);
+      window.removeEventListener('touchend', onDragEnd);
     };
   }, []);
 
@@ -116,7 +151,14 @@ export default function Cocoen(): Node {
   }, []);
 
   return (
-    <Container onClick={handleClick} ref={ref}>
+    <Container
+      onMouseDown={onDragStart}
+      onTouchStart={onDragStart}
+      onMouseMove={onDrag}
+      onTouchMove={onDrag}
+      onClick={onClick}
+      ref={ref}
+    >
       <Before style={{ width: openRatio }}>
         <BeforeImage
           src={beforeUrl}
