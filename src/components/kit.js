@@ -1,6 +1,5 @@
 // @flow
 import React from 'react';
-import LazyLoad from 'react-lazyload';
 import type { Node } from 'react';
 import Heading from 'components/heading.js';
 import {
@@ -129,9 +128,7 @@ export default function Kit({ type, alignment }: Props): Node {
       </Header>
       <Body alignment={alignment}>
         <ImageContainer alignment={alignment}>
-          <LazyLoad height={200} offset={100}>
-            <Image fadeIn src={image} alt={`${title} ${subtitle}`} />
-          </LazyLoad>
+          <Image src={image} alt={`${title} ${subtitle}`} />
         </ImageContainer>
         <Text>{text}</Text>
       </Body>

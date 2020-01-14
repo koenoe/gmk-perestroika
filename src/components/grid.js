@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import type { Node } from 'react';
 
 import styled from '@emotion/styled';
-import LazyLoad from 'react-lazyload';
 import Carousel, { Modal, ModalGateway } from 'react-images';
 import { Container } from 'components/contentBlocks.js';
 import shuffleArray from 'utils/shuffleArray.js';
@@ -109,7 +108,7 @@ const images: Array<GridImage> = [
 ];
 
 const Grid = (): Node => {
-  const [gallery, setGallery] = useState<Array<Image>>(images);
+  const [gallery, setGallery] = useState<Array<GridImage>>(images);
   const [lightboxIsOpen, setLightboxIsOpen] = useState<boolean>(false);
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
   const toggleLightbox = (index: number) => {
@@ -131,9 +130,7 @@ const Grid = (): Node => {
             key={source}
             onClick={() => toggleLightbox(index)}
           >
-            <LazyLoad height={200} offset={100}>
-              <Image fadeIn src={source} alt={caption} />
-            </LazyLoad>
+            <Image src={source} alt={caption} />
           </Thumbnail>
         ))}
       </Wrapper>

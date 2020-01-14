@@ -1,6 +1,5 @@
 // @flow
 import React from 'react';
-import LazyLoad from 'react-lazyload';
 import ReactImagesCarousel from 'react-images';
 import type { Node } from 'react';
 
@@ -22,7 +21,7 @@ type CarouselImage = {|
   caption: string,
 |};
 
-const images: Array<Image> = [
+const images: Array<CarouselImage> = [
   { source: concrete910, caption: 'TGR 910 by Yuktsi' },
   { source: concreteBauer, caption: 'Bauer by Dixie' },
   { source: concreteOGR, caption: 'OGR by Alchemist Keyboards' },
@@ -39,11 +38,7 @@ type ViewProps = $ReadOnly<{|
 
 function View(props: ViewProps): Node {
   const { data } = props;
-  return (
-    <LazyLoad height={200} offset={100}>
-      <Image fadeIn src={data.source} alt={data.caption} />{' '}
-    </LazyLoad>
-  );
+  return <Image src={data.source} alt={data.caption} />;
 }
 
 export default function Carousel(): Node {
