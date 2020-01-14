@@ -25,7 +25,7 @@ type Props = $ReadOnly<{|
 
 const LazyLoadedImage = ({ src, alt }: Props) => {
   return (
-    <LazyLoad height={200} offset={100}>
+    <LazyLoad height="100%" offset={100} once>
       <Image src={src} alt={alt} />
     </LazyLoad>
   );
