@@ -1,4 +1,4 @@
-[img width=640 height=341]https://koenromers.com/gmk-perestroika/img/logo.png[/img]
+[img width=640 height=341]https://gmk-perestroika.com/img/logo.png[/img]
 
 I hereby present [b]GMK Perestroika (Перестройка)[/b] to you.
 
@@ -8,11 +8,13 @@ The rich dark red colour is a standout feature of this set. Its Cyrillic alphas 
 
 [size=16pt]Kits[/size]
 
-[img width=640 height=380]https://koenromers.com/gmk-perestroika/img/base-kit.png[/img]
+[img width=640 height=380]https://gmk-perestroika.com/img/base-kit.png[/img]
 
-[img width=640 height=360]https://koenromers.com/gmk-perestroika/img/unusual-kit.png[/img]
+[img width=640 height=320]https://gmk-perestroika.com/img/usual-kit.png[/img]
 
-[img width=640 height=360]https://koenromers.com/gmk-perestroika/img/modern-kit.png[/img]
+[img width=640 height=360]https://gmk-perestroika.com/img/unusual-kit.png[/img]
+
+[img width=640 height=360]https://gmk-perestroika.com/img/modern-kit.png[/img]
 
 [hr]
 
@@ -21,7 +23,7 @@ The rich dark red colour is a standout feature of this set. Its Cyrillic alphas 
 [b]Alphas and mods[/b] - RAL 3005 (Wine Red)
 [b]Legends[/b] - RAL 9001 (Cream)
 
-[url=https://www.ralcolorchart.com/ral-classic/ral-3005-wine-red][img width=200 height=200]https://koenromers.com/gmk-perestroika/img/ral3005.png?foo=bar[/img][/url] [url=https://www.ralcolorchart.com/ral-classic/ral-9001-cream][img width=200 height=200]https://koenromers.com/gmk-perestroika/img/ral9001.png[/img][/url]
+[url=https://www.ralcolorchart.com/ral-classic/ral-3005-wine-red][img width=200 height=200]https://gmk-perestroika.com/img/ral3005.png?foo=bar[/img][/url] [url=https://www.ralcolorchart.com/ral-classic/ral-9001-cream][img width=200 height=200]https://gmk-perestroika.com/img/ral9001.png[/img][/url]
 
 [hr]
 
@@ -29,16 +31,16 @@ The rich dark red colour is a standout feature of this set. Its Cyrillic alphas 
 [size=12pt]Concrete scene[/size]
 
 Bauer by Dixie
-[img width=640 height=360]https://koenromers.com/gmk-perestroika/img/concrete-bauer.png[/img]
+[img width=640 height=360]https://gmk-perestroika.com/img/concrete-bauer.png[/img]
 
 AKB-OGR by Alchemist Keyboards
-[img width=640 height=360]https://koenromers.com/gmk-perestroika/img/concrete-ogr.png?a=b[/img]
+[img width=640 height=360]https://gmk-perestroika.com/img/concrete-ogr.png?a=b[/img]
 
 TGR 910 by Yutski
-[img width=640 height=360]https://koenromers.com/gmk-perestroika/img/concrete-910.png[/img]
+[img width=640 height=360]https://gmk-perestroika.com/img/concrete-910.png[/img]
 
 Prophet by Cable Car Designs
-[img width=640 height=360]https://koenromers.com/gmk-perestroika/img/concrete-prophet.png[/img]
+[img width=640 height=360]https://gmk-perestroika.com/img/concrete-prophet.png[/img]
 
 [hr]
 
@@ -46,23 +48,23 @@ Prophet by Cable Car Designs
 [size=12pt]My office scene[/size]
 
 Lynx L50 by wixxzblu
-[img width=640 height=360]https://koenromers.com/gmk-perestroika/img/office-lynxl50.png[/img]
+[img width=640 height=360]https://gmk-perestroika.com/img/office-lynxl50.png[/img]
 
 Prophet by Cable Car Designs
-[img width=640 height=360]https://koenromers.com/gmk-perestroika/img/office-prophet.png[/img]
+[img width=640 height=360]https://gmk-perestroika.com/img/office-prophet.png[/img]
 
 Noxary 280 by xondat
-[img width=640 height=360]https://koenromers.com/gmk-perestroika/img/office-noxary280.png[/img]
+[img width=640 height=360]https://gmk-perestroika.com/img/office-noxary280.png[/img]
 
 Bauer by Dixie
-[img width=640 height=360]https://koenromers.com/gmk-perestroika/img/office-bauer.png[/img]
+[img width=640 height=360]https://gmk-perestroika.com/img/office-bauer.png[/img]
 
 [hr]
 
 [size=16pt]General information[/size]
 
 [size=12pt]Date[/size]
-The set will be available for group buy in Q1 of 2020.
+The set will be available for group buy from the 1st of February 2020 until the 29th of February 2020.
 
 [size=12pt]Vendors[/size]
 [b]EU[/b] - [url=https://mykeyboard.eu]MyKeyboard[/url]
@@ -79,7 +81,7 @@ The set will be available for group buy in Q1 of 2020.
 [url=https://forms.gle/54zhRoBiyZ9sPbxi6]Please fill in this form if you’re interested.[/url]
 
 Please use this banner if you’d like to support the project: 
-[code][url=https://geekhack.org/index.php?topic=102714.0][img]https://koenromers.com/gmk-perestroika/img/signature.png[/img][/url][/code]
+[code][url=https://geekhack.org/index.php?topic=102714.0][img]https://gmk-perestroika.com/img/signature.png[/img][/url][/code]
 
 [hr]
 
@@ -105,5 +107,7 @@ Besides being a true artist when it comes to the amazing renders, this guy has a
 
 [size=16pt]Changelog[/size]
 
+[b]03/01/2020[/b] - Kits finalised
+[b]09/12/2019[/b] - Start date announced
 [b]01/11/2019[/b] - Kits updated
 [b]02/10/2019[/b] - Interest Check live!
