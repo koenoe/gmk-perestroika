@@ -6,10 +6,11 @@
   "author": "Koen Romers <info@koenromers.com>",
   "license": "MIT",
   "scripts": {
+    "add-domain": "echo \"gmk-perestroika.com\" > build/CNAME",
     "build": "NODE_ENV=production webpack -p --config ./webpack/config.prod.js",
     "build:open": "yarn build && http-server ./build -p 4000 -o",
     "clean-dist": "rimraf ./build && mkdir build",
-    "deploy": "yarn build && gh-pages -d build",
+    "deploy": "yarn build && yarn add-domain && gh-pages -d build",
     "flow": "flow check",
     "flow:cover": "flow-coverage-report -i 'src/**/*.js'",
     "lint": "yarn lint:js",
