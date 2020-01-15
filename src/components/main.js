@@ -25,24 +25,24 @@ const Layout = styled.div`
   padding: 15px;
   box-sizing: border-box;
 
-  ${({ theme }) => theme.media.s`
+  ${({ theme }: CssProps) => theme.media.s`
     max-width: 576px;
   `}
 
-  ${({ theme }) => theme.media.m`
+  ${({ theme }: CssProps) => theme.media.m`
     max-width: 768px;
     padding: 25px;
   `}
 
-  ${({ theme }) => theme.media.l`
+  ${({ theme }: CssProps) => theme.media.l`
     max-width: 992px;
   `}
 
-  ${({ theme }) => theme.media.xl`
+  ${({ theme }: CssProps) => theme.media.xl`
     max-width: 1200px;
   `}
 
-  ${({ theme }) => theme.media.xxl`
+  ${({ theme }: CssProps) => theme.media.xxl`
     max-width: 1600px;
   `}
 `;
@@ -52,7 +52,7 @@ const Logo = styled.img`
   display: block;
   max-width: 100%;
 
-  ${({ theme }) => theme.media.l`
+  ${({ theme }: CssProps) => theme.media.l`
     margin-top: 100px;
     max-width: 50%;
   `}
@@ -71,11 +71,11 @@ const IntroContainer = styled.div`
   box-sizing: border-box;
   max-width: 100%;
 
-  ${({ theme }) => theme.media.l`
+  ${({ theme }: CssProps) => theme.media.l`
     max-width: 70%;
   `}
 
-  ${({ theme }) => theme.media.xl`
+  ${({ theme }: CssProps) => theme.media.xl`
     max-width: 60%;
   `}
 `;
@@ -83,7 +83,7 @@ const IntroContainer = styled.div`
 const Header = styled.div`
   margin-left: 9%;
 
-  ${({ theme }) => theme.media.m`
+  ${({ theme }: CssProps) => theme.media.m`
     margin-left: 28%;
   `}
 `;
