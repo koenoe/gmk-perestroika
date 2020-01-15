@@ -60,7 +60,7 @@ export default function App(): Node {
       <Global
         styles={css`
           ${emotionNormalize}
-          @import url('https://fonts.googleapis.com/css?family=Lora:400|Montserrat:700,900&display=swap&subset=cyrillic');
+          @import url('https://fonts.googleapis.com/css?family=Lora:400,400i|Montserrat:700,900&display=swap&subset=cyrillic');
           html,
           body {
             padding: 0;

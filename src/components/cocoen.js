@@ -1,19 +1,23 @@
 // @flow
 import React, { useState, useRef, useEffect } from 'react';
 import styled from '@emotion/styled';
-// import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { debounce } from 'lodash';
 
 import type { Node } from 'react';
+import type { Theme } from 'components/app.js';
 
 import beforeUrl from '../../img/office-prophet.png';
 import afterUrl from '../../img/office-prophet-night.png';
+
+type CssProps = $ReadOnly<{|
+  theme: Theme,
+|}>;
 
 const Container = styled.div`
   box-sizing: border-box;
   cursor: pointer;
   line-height: 0;
-  margin: 0 auto 75px;
+  margin: 0 auto;
   overflow: hidden;
   padding: 0;
   position: relative;
@@ -69,6 +73,24 @@ const Drag = styled.span`
     top: 50%;
     width: 14px;
   }
+`;
+
+const Legend = styled.div`
+  display: grid;
+  grid-template-columns: auto auto auto;
+  font-style: italic;
+  font-size: 12px;
+  margin: 10px 0 75px 0;
+  box-sizing: border-box;
+  text-align: center;
+
+  ${({ theme }: CssProps) => theme.media.l`
+    font-size: 14px;
+  `}
+`;
+
+const Tip = styled.span`
+  opacity: 0.25;
 `;
 
 export default function Cocoen(): Node {
@@ -166,24 +188,31 @@ export default function Cocoen(): Node {
   }, []);
 
   return (
-    <Container
-      onMouseDown={onDragStart}
-      onTouchStart={onDragStart}
-      onMouseMove={onDrag}
-      onTouchMove={onDrag}
-      onClick={onClick}
-      ref={ref}
-    >
-      <Before style={{ width: openRatio }}>
-        <BeforeImage
-          src={beforeUrl}
-          alt=""
-          style={{ width: elementWidth }}
-          draggable={false}
-        />
-      </Before>
-      <AfterImage src={afterUrl} alt="" draggable={false} />
-      <Drag ref={dragRef} style={{ left: openRatio }} />
-    </Container>
+    <>
+      <Container
+        onMouseDown={onDragStart}
+        onTouchStart={onDragStart}
+        onMouseMove={onDrag}
+        onTouchMove={onDrag}
+        onClick={onClick}
+        ref={ref}
+      >
+        <Before style={{ width: openRatio }}>
+          <BeforeImage
+            src={beforeUrl}
+            alt=""
+            style={{ width: elementWidth }}
+            draggable={false}
+          />
+        </Before>
+        <AfterImage src={afterUrl} alt="" draggable={false} />
+        <Drag ref={dragRef} style={{ left: openRatio }} />
+      </Container>
+      <Legend>
+        <span>day</span>
+        <Tip>(move slider to left or right)</Tip>
+        <span>night</span>
+      </Legend>
+    </>
   );
 }
