@@ -94,6 +94,14 @@ export default function Cocoen(): Node {
     return `${ratio * 100}%`;
   };
 
+  const calculateXfromEvent = e => {
+    const clientX = e.clientX ? e.clientX : e.touches[0].clientX;
+    const offsetLeft = ref.current
+      ? ref.current.getBoundingClientRect().left
+      : 0;
+    return clientX - offsetLeft;
+  };
+
   const onDragStart = e => {
     e.preventDefault();
 
@@ -103,23 +111,23 @@ export default function Cocoen(): Node {
   const onDrag = e => {
     e.preventDefault();
 
-    if (!isDragging) {
+    if (!isDragging || !ref.current) {
       return;
     }
 
-    setX(e.clientX ? e.clientX : e.touches[0].clientX);
+    setX(calculateXfromEvent(e));
   };
 
   const onDragEnd = e => {
     e.preventDefault();
+
     setIsDragging(false);
   };
 
   const onClick = e => {
     e.preventDefault();
 
-    const clientX = e.clientX ? e.clientX : e.touches[0].clientX;
-    setX(clientX - e.target.getBoundingClientRect().left);
+    setX(calculateXfromEvent(e));
   };
 
   const updateDimensions = () => {
