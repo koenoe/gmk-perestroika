@@ -1,7 +1,7 @@
 language: node_js
 cache: yarn
 node_js:
-  - '12.9.0'
+  - '12.14.1'
 script:
   - yarn flow
   - yarn flow:cover

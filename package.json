@@ -12,7 +12,7 @@
     "clean-dist": "rimraf ./build && mkdir build",
     "deploy": "yarn build && yarn add-domain && gh-pages -d build",
     "flow": "flow check",
-    "flow:cover": "flow-coverage-report -i \"src/**/*.js\"",
+    "flow:cover": "flow-coverage-report -i \"src/**/*.js\" --threshold 75",
     "lint": "yarn lint:js",
     "lint:css": "stylelint \"src/**/*.css\"",
     "lint:js": "eslint \"src/**/*.js\"",
