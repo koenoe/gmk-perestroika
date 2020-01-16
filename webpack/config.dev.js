@@ -32,7 +32,7 @@ module.exports = require('./config.base.js')({
     }),
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
-      DEBUG_MODE: false,
+      DEBUG_MODE: true,
     }),
   ],
 
