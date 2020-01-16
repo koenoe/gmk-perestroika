@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import { SocialIcon } from 'react-social-icons';
 import { useTheme } from 'emotion-theming';
 
+import type { Theme } from 'components/app';
 import type { Node } from 'react';
 
 const Content = styled.div`
@@ -11,16 +12,15 @@ const Content = styled.div`
   justify-content: space-between;
   align-items: center;
   font-size: 12px;
+  margin-top: 50px;
 `;
 
-const Icons = styled.div``;
-
-export default function GDPR(): Node {
-  const theme = useTheme();
+export default function Footer(): Node {
+  const theme = useTheme<Theme>();
   return (
     <Content>
       Copyright &copy; 2020 Koen Romers{' '}
-      <Icons>
+      <div>
         <SocialIcon
           url="https://youtube.com/koenromers"
           network="youtube"
@@ -45,7 +45,7 @@ export default function GDPR(): Node {
           style={{ height: 40, width: 40 }}
           target="_blank"
         />
-      </Icons>
+      </div>
     </Content>
   );
 }
