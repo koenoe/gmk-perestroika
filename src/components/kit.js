@@ -75,8 +75,8 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
           <>
             <p>
               Not feeling the Cyrillics? Have no fear, you can convert the kit
-              to be fully English (US/UK). Just like Gorbachev, the board
-              strives to provide for the masses.
+              to be fully English (US/UK). Just like Gorbachev, the set strives
+              to provide for the masses.
             </p>
             <p>
               During the interest check, it was clear that it would be
