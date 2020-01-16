@@ -54,20 +54,25 @@ function CookieConsent({ children }): Node {
   return createPortal(children, body);
 }
 
+const init = () => {
+  ReactGA.initialize('UA-156150051-1');
+};
+
 export default function GDPR(): Node {
   const [cookies, setCookie] = useCookies([cookieName]);
   const [show, setShow] = useState<boolean>(true);
 
-  const init = () => {
-    ReactGA.initialize('UA-156150051-1');
-    setShow(false);
-  };
-
   useEffect(() => {
     if (cookies[cookieName]) {
-      init();
+      setShow(false);
     }
   }, []);
+
+  useEffect(() => {
+    if (!show) {
+      init();
+    }
+  }, [show]);
 
   const handleClick = (e: SyntheticMouseEvent<>) => {
     e.preventDefault();
@@ -77,7 +82,7 @@ export default function GDPR(): Node {
       secure: process.env.NODE_ENV === 'production',
     });
 
-    init();
+    setShow(false);
   };
 
   return show ? (
