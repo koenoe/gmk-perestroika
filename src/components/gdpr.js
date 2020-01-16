@@ -12,7 +12,7 @@ type CssProps = $ReadOnly<{|
   theme: Theme,
 |}>;
 
-const cookieName: string = 'gdpr';
+const COOKIE_NAME: string = 'gdpr';
 
 const Content = styled.div`
   position: fixed;
@@ -59,11 +59,11 @@ const init = () => {
 };
 
 export default function GDPR(): Node {
-  const [cookies, setCookie] = useCookies([cookieName]);
+  const [cookies, setCookie] = useCookies([COOKIE_NAME]);
   const [show, setShow] = useState<boolean>(true);
 
   useEffect(() => {
-    if (cookies[cookieName]) {
+    if (cookies[COOKIE_NAME]) {
       setShow(false);
     }
   }, []);
@@ -77,7 +77,7 @@ export default function GDPR(): Node {
   const handleClick = (e: SyntheticMouseEvent<>) => {
     e.preventDefault();
 
-    setCookie(cookieName, true, {
+    setCookie(COOKIE_NAME, true, {
       expires: new Date(new Date().setFullYear(new Date().getFullYear() + 1)),
       secure: process.env.NODE_ENV === 'production',
     });
