@@ -1,6 +1,8 @@
 // @flow
 import React from 'react';
 import type { Node } from 'react';
+import styled from '@emotion/styled';
+
 import Heading from 'components/heading.js';
 import {
   Body,
@@ -10,17 +12,35 @@ import {
   Text,
 } from 'components/contentBlocks.js';
 import Image from 'components/image.js';
+import type { Theme } from 'components/app.js';
 
 import baseKitUrl from '../../img/base-kit-without-title.png';
 import usualKitUrl from '../../img/usual-kit-without-title.png';
 import unusualKitUrl from '../../img/unusual-kit-without-title.png';
 import modernKitUrl from '../../img/modern-kit-without-title.png';
 
+type CssProps = $ReadOnly<{|
+  theme: Theme,
+|}>;
+
+const Price = styled.span`
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: ${({ theme }: CssProps) => theme.colors.red};
+  background: ${({ theme }: CssProps) => theme.colors.cream};
+  display: inline-block;
+  padding: 5px 15px;
+  font-size: 13px;
+  cursor: default;
+`;
+
 type Content = {|
   title: string,
   subtitle: string,
   image: string,
   text: Node,
+  price: number,
 |};
 
 function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
@@ -44,6 +64,7 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
             </p>
           </>
         ),
+        price: 100,
       };
     case 'usual':
       return {
@@ -64,6 +85,7 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
             </p>
           </>
         ),
+        price: 100,
       };
     case 'unusual':
       return {
@@ -82,6 +104,7 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
             </p>
           </>
         ),
+        price: 100,
       };
     case 'modern':
       return {
@@ -98,6 +121,7 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
             <p>Forward-thinkers, we salute you.</p>
           </>
         ),
+        price: 100,
       };
     default:
       return {
@@ -105,6 +129,7 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
         subtitle: '',
         image: baseKitUrl,
         text: '',
+        price: 0,
       };
   }
 }
@@ -115,7 +140,7 @@ type Props = $ReadOnly<{|
 |}>;
 
 export default function Kit({ type, alignment }: Props): Node {
-  const { title, subtitle, image, text } = getContent(type);
+  const { title, subtitle, image, text, price } = getContent(type);
 
   return (
     <Container>
@@ -129,6 +154,7 @@ export default function Kit({ type, alignment }: Props): Node {
       <Body alignment={alignment}>
         <ImageContainer alignment={alignment}>
           <Image src={image} alt={`${title} ${subtitle}`} />
+          <Price>{price} USD</Price>
         </ImageContainer>
         <Text>{text}</Text>
       </Body>

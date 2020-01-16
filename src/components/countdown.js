@@ -13,6 +13,7 @@ type CssProps = $ReadOnly<{|
 
 const Blocks = styled.div`
   display: flex;
+  user-select: none;
 `;
 
 const Block = styled.div`
