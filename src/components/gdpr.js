@@ -74,7 +74,7 @@ export default function GDPR(): Node {
 
     setCookie(cookieName, true, {
       expires: new Date(new Date().setFullYear(new Date().getFullYear() + 1)),
-      secure: process.env.NODE_ENV !== 'production',
+      secure: process.env.NODE_ENV === 'production',
     });
 
     init();
