@@ -11,6 +11,7 @@ import Countdown from 'components/countdown.js';
 import Grid from 'components/grid.js';
 import Heading from 'components/heading.js';
 import Kit from 'components/kit.js';
+import Footer from 'components/footer.js';
 import type { Theme } from 'components/app.js';
 
 import logoUrl from '../../img/logo.svg';
@@ -150,6 +151,7 @@ export default function Main(): Node {
         </H1>
         <Cocoen />
       </Container>
+      <Footer />
     </Layout>
   );
 }
