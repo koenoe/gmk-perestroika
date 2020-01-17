@@ -31,6 +31,7 @@ const breakpoints = {
   l: 992,
   m: 768,
   s: 576,
+  xs: 320,
 };
 
 const media = Object.keys(breakpoints).reduce((acc, label) => {
@@ -77,7 +78,8 @@ export default function App(): Node {
           h2,
           h3,
           h4,
-          strong {
+          strong,
+          button {
             font-family: ${theme.fonts.secondary};
             font-weight: 900;
             text-transform: uppercase;
@@ -86,6 +88,11 @@ export default function App(): Node {
           }
           h1 {
             font-size: 36px;
+          }
+          button {
+            outline: none;
+            cursor: pointer;
+            border: 0;
           }
         `}
       />

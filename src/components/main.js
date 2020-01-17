@@ -82,10 +82,16 @@ const IntroContainer = styled.div`
 `;
 
 const Header = styled.div`
-  margin-left: 9%;
+  margin-left: 50%;
+  transform: translateX(-77%);
+  white-space: nowrap;
+
+  ${({ theme }: CssProps) => theme.media.l`
+    transform: translateX(-36%);
+  `}
 
   ${({ theme }: CssProps) => theme.media.m`
-    margin-left: 28%;
+    transform: translateX(-47%);
   `}
 `;
 

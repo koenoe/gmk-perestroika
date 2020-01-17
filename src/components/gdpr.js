@@ -1,9 +1,10 @@
 // @flow
 import React, { useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
 import ReactGA from 'react-ga';
 import { useCookies } from 'react-cookie';
 import styled from '@emotion/styled';
+
+import Modal from 'components/modal.js';
 
 import type { Node } from 'react';
 import type { Theme } from 'components/app.js';
@@ -32,27 +33,18 @@ const Content = styled.div`
   font-size: 15px;
 
   button {
-    border: 0;
     background: white;
     color: black;
     padding: 10px 15px;
     margin-left: 15px;
     font-weight: bold;
-    cursor: pointer;
+    font-family: Arial, sans-serif;
   }
 
   ${({ theme }: CssProps) => theme.media.l`
     padding: 20px;
   `}
 `;
-
-function CookieConsent({ children }): Node {
-  const { body } = document;
-  if (!body) {
-    return null;
-  }
-  return createPortal(children, body);
-}
 
 const init = () => {
   ReactGA.initialize('UA-156150051-1');
@@ -86,13 +78,13 @@ export default function GDPR(): Node {
   };
 
   return show ? (
-    <CookieConsent>
+    <Modal>
       <Content>
         This website uses cookies to enhance the user experience.
         <button type="button" onClick={handleClick}>
           OK
         </button>
       </Content>
-    </CookieConsent>
+    </Modal>
   ) : null;
 }
