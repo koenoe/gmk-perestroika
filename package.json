@@ -36,7 +36,8 @@
     "react-ga": "2.7.0",
     "react-images": "1.1.0-beta.2",
     "react-lazyload": "2.6.5",
-    "react-social-icons": "4.1.0"
+    "react-social-icons": "4.1.0",
+    "react-transition-group": "4.3.0"
   },
   "devDependencies": {
     "@babel/core": "7.8.3",

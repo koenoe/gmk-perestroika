@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import type { Node } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
+import { Transition } from 'react-transition-group';
 
 import Heading from 'components/heading.js';
 import {
@@ -66,6 +67,8 @@ const ModalOverlay = styled.div`
   bottom: 0;
   top: 0;
   background: rgba(0, 0, 0, 0.75);
+  transition: 0.25s;
+  opacity: ${({ state }) => (state === 'entered' ? 1 : 0)};
 `;
 
 const ModalContent = styled.div`
@@ -79,6 +82,8 @@ const ModalContent = styled.div`
   background: ${({ theme }: CssProps) => theme.colors.red};
   color: ${({ theme }: CssProps) => theme.colors.cream};
   overflow: hidden;
+  transition: 0.5s;
+  opacity: ${({ state }) => (state === 'entered' ? 1 : 0)};
 `;
 
 const ModalHeader = styled.div`
@@ -309,30 +314,34 @@ export default function Kit({ type, alignment }: Props): Node {
           </Text>
         </Body>
       </Container>
-      {showBuyModal ? (
-        <Modal>
-          <ModalOverlay onClick={handleClose} />
-          <ModalContent>
-            <ModalHeader>
-              <Heading alignment="center">
-                <h1>Choose vendor</h1>
-              </Heading>
-            </ModalHeader>
-            <ModalButtons>
-              {vendorNames.map((name, index) => (
-                <ModalButton
-                  key={name}
-                  href={vendorUrls[index]}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {name}
-                </ModalButton>
-              ))}
-            </ModalButtons>
-          </ModalContent>
-        </Modal>
-      ) : null}
+      <Modal>
+        <Transition in={showBuyModal} timeout={100} unmountOnExit mountOnEnter>
+          {state => <ModalOverlay onClick={handleClose} state={state} />}
+        </Transition>
+        <Transition in={showBuyModal} timeout={200} unmountOnExit mountOnEnter>
+          {state => (
+            <ModalContent state={state}>
+              <ModalHeader>
+                <Heading alignment="center">
+                  <h1>Choose vendor</h1>
+                </Heading>
+              </ModalHeader>
+              <ModalButtons>
+                {vendorNames.map((name, index) => (
+                  <ModalButton
+                    key={name}
+                    href={vendorUrls[index]}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {name}
+                  </ModalButton>
+                ))}
+              </ModalButtons>
+            </ModalContent>
+          )}
+        </Transition>
+      </Modal>
     </>
   );
 }
