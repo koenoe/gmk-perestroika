@@ -32,6 +32,8 @@ const Price = styled.span`
   display: inline-block;
   padding: 5px 15px;
   font-size: 13px;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
   cursor: default;
 `;
 
