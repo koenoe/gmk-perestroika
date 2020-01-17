@@ -1,10 +1,13 @@
 // @flow
 import React from 'react';
 import ReactImagesCarousel from 'react-images';
+import styled from '@emotion/styled';
 import type { Node } from 'react';
+import type { ViewType } from 'react-images';
 
 import { Container } from 'components/contentBlocks.js';
 import Image from 'components/image.js';
+import type { Theme } from 'components/app.js';
 
 import concrete910 from '../../img/concrete-910.png';
 import concreteBauer from '../../img/concrete-bauer.png';
@@ -15,6 +18,14 @@ import officeBauer from '../../img/office-bauer.png';
 import officeNoxary280 from '../../img/office-noxary280.png';
 import officeLynxL50 from '../../img/office-lynxl50.png';
 import officeProphet from '../../img/office-prophet.png';
+
+type CssProps = $ReadOnly<{|
+  theme: Theme,
+|}>;
+
+const Span = styled.span`
+  color: ${(props: CssProps) => props.theme.colors.cream};
+`;
 
 type CarouselImage = {|
   source: string,
@@ -41,10 +52,28 @@ function View(props: ViewProps): Node {
   return <Image src={data.source} alt={data.caption} />;
 }
 
+function FooterCaption(props: ViewType): Node {
+  const { currentView } = props;
+  const { caption } = currentView;
+  return <Span>{caption}</Span>;
+}
+
+function FooterCount(props: ViewType): Node {
+  const { currentIndex, views } = props;
+  return (
+    <Span>
+      {currentIndex + 1}/{views.length}
+    </Span>
+  );
+}
+
 export default function Carousel(): Node {
   return (
     <Container>
-      <ReactImagesCarousel views={images} components={{ View }} />
+      <ReactImagesCarousel
+        views={images}
+        components={{ View, FooterCaption, FooterCount }}
+      />
     </Container>
   );
 }
