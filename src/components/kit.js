@@ -168,7 +168,7 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
             </p>
           </>
         ),
-        price: 100,
+        price: 0,
         vendors: {
           europe: 'https://mykeyboard.eu',
           america: 'https://store.projectkeyboard.com',
@@ -195,7 +195,7 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
             </p>
           </>
         ),
-        price: 100,
+        price: 0,
         vendors: {
           europe: 'https://mykeyboard.eu',
           america: 'https://store.projectkeyboard.com',
@@ -220,7 +220,7 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
             </p>
           </>
         ),
-        price: 100,
+        price: 0,
         vendors: {
           europe: 'https://mykeyboard.eu',
           america: 'https://store.projectkeyboard.com',
@@ -243,7 +243,7 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
             <p>Forward-thinkers, we salute you.</p>
           </>
         ),
-        price: 100,
+        price: 0,
         vendors: {
           europe: 'https://mykeyboard.eu',
           america: 'https://store.projectkeyboard.com',
@@ -304,13 +304,15 @@ export default function Kit({ type, alignment }: Props): Node {
         <Body alignment={alignment}>
           <ImageContainer alignment={alignment}>
             <Image src={image} alt={`${title} ${subtitle}`} />
-            <Price>{price} USD</Price>
+            {price > 0 && <Price>{price} USD</Price>}
           </ImageContainer>
           <Text>
             {text}
-            <Button type="button" onClick={handleOpen}>
-              Buy now
-            </Button>
+            {price > 0 && (
+              <Button type="button" onClick={handleOpen}>
+                Buy now
+              </Button>
+            )}
           </Text>
         </Body>
       </Container>
