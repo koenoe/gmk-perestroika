@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import styled from '@emotion/styled';
 import { debounce } from 'lodash';
 
-import type { Node } from 'react';
+import type { Node, ComponentType, ElementRef } from 'react';
 import type { Theme } from 'components/app.js';
 
 import beforeUrl from '../../img/office-prophet.png';
@@ -13,7 +13,7 @@ type CssProps = $ReadOnly<{|
   theme: Theme,
 |}>;
 
-const Container = styled.div`
+const Container: ComponentType<*> = styled.div`
   box-sizing: border-box;
   cursor: pointer;
   line-height: 0;
@@ -33,7 +33,7 @@ const Container = styled.div`
   }
 `;
 
-const Before = styled.div`
+const Before: ComponentType<*> = styled.div`
   height: 100%;
   left: 0;
   overflow: hidden;
@@ -42,17 +42,17 @@ const Before = styled.div`
   width: 50%;
 `;
 
-const BeforeImage = styled.img`
+const BeforeImage: ComponentType<*> = styled.img`
   max-width: none;
 `;
 
-const AfterImage = styled.img`
+const AfterImage: ComponentType<*> = styled.img`
   display: block;
   width: 100%;
   max-width: 100%;
 `;
 
-const Drag = styled.span`
+const Drag: ComponentType<*> = styled.span`
   background: #e9e0d2;
   bottom: 0;
   cursor: ew-resize;
@@ -75,7 +75,7 @@ const Drag = styled.span`
   }
 `;
 
-const Legend = styled.div`
+const Legend: ComponentType<*> = styled.div`
   display: grid;
   grid-template-columns: auto auto auto;
   font-style: italic;
@@ -89,13 +89,15 @@ const Legend = styled.div`
   `}
 `;
 
-const Tip = styled.span`
+const Tip: ComponentType<*> = styled.span`
   opacity: 0.25;
 `;
 
+type Ref = ElementRef<*>;
+
 export default function Cocoen(): Node {
-  const ref = useRef();
-  const dragRef = useRef();
+  const ref = useRef<Ref>();
+  const dragRef = useRef<Ref>();
 
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [elementWidth, setElementWidth] = useState<number>(0);

@@ -6,7 +6,7 @@ import styled from '@emotion/styled';
 
 import Modal from 'components/modal.js';
 
-import type { Node } from 'react';
+import type { Node, ComponentType } from 'react';
 import type { Theme } from 'components/app.js';
 
 type CssProps = $ReadOnly<{|
@@ -15,7 +15,7 @@ type CssProps = $ReadOnly<{|
 
 const COOKIE_NAME: string = 'gdpr';
 
-const Content = styled.div`
+const Content: ComponentType<*> = styled.div`
   position: fixed;
   left: 50%;
   bottom: 15px;

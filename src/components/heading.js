@@ -1,8 +1,8 @@
 // @flow
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import styled from '@emotion/styled';
 
-import type { Node } from 'react';
+import type { Node, ComponentType, ElementRef } from 'react';
 import type { Theme } from 'components/app.js';
 
 type HeaderProps = $ReadOnly<{|
@@ -11,7 +11,7 @@ type HeaderProps = $ReadOnly<{|
   theme: Theme,
 |}>;
 
-const Header: any = styled.header`
+const Header: ComponentType<*> = styled.header`
   margin-bottom: 25px;
   line-height: 1.5;
   contain: layout;
@@ -60,13 +60,13 @@ type Props = $ReadOnly<{|
   alignment: 'left' | 'right' | 'center',
 |}>;
 
-type Ref = ?HTMLElement;
+type Ref = ElementRef<*>;
 
 export default function Heading({ children, alignment }: Props): Node {
-  const ref = React.useRef<Ref>();
+  const ref = useRef<Ref>();
   const [textLength, setTextLength] = React.useState<number>(0);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!ref.current) {
       return;
     }

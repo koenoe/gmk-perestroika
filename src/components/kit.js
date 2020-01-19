@@ -1,6 +1,6 @@
 // @flow
 import React, { useState } from 'react';
-import type { Node } from 'react';
+import type { Node, ComponentType } from 'react';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { Transition } from 'react-transition-group';
@@ -26,7 +26,7 @@ type CssProps = $ReadOnly<{|
   theme: Theme,
 |}>;
 
-const Price = styled.span`
+const Price: ComponentType<*> = styled.span`
   position: absolute;
   top: 15px;
   right: 15px;
@@ -56,11 +56,11 @@ const buttonStyles = ({ theme }: CssProps) =>
     }
   `;
 
-const Button = styled.button`
+const Button: ComponentType<*> = styled.button`
   ${buttonStyles}
 `;
 
-const ModalOverlay = styled.div`
+const ModalOverlay: ComponentType<*> = styled.div`
   position: fixed;
   left: 0;
   right: 0;
@@ -71,7 +71,7 @@ const ModalOverlay = styled.div`
   opacity: ${({ state }) => (state === 'entered' ? 1 : 0)};
 `;
 
-const ModalContent = styled.div`
+const ModalContent: ComponentType<*> = styled.div`
   position: fixed;
   left: 50%;
   top: 50%;
@@ -86,7 +86,7 @@ const ModalContent = styled.div`
   opacity: ${({ state }) => (state === 'entered' ? 1 : 0)};
 `;
 
-const ModalHeader = styled.div`
+const ModalHeader: ComponentType<*> = styled.div`
   margin: 25px 0 0 50%;
   transform: translateX(-75%);
   white-space: nowrap;
@@ -96,7 +96,7 @@ const ModalHeader = styled.div`
   `}
 `;
 
-const ModalButtons = styled.div`
+const ModalButtons: ComponentType<*> = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -109,7 +109,7 @@ const ModalButtons = styled.div`
   `}
 `;
 
-const ModalButton = styled.a`
+const ModalButton: ComponentType<*> = styled.a`
   ${buttonStyles}
   cursor: pointer;
   user-select: none;

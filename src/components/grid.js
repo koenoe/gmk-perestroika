@@ -1,6 +1,6 @@
 // @flow
 import React, { useEffect, useState } from 'react';
-import type { Node } from 'react';
+import type { Node, ComponentType } from 'react';
 
 import styled from '@emotion/styled';
 import Carousel, { Modal, ModalGateway } from 'react-images';
@@ -27,7 +27,7 @@ type CssProps = $ReadOnly<{|
   theme: Theme,
 |}>;
 
-const Wrapper = styled(Container)`
+const Wrapper: ComponentType<*> = styled(Container)`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 
@@ -40,7 +40,7 @@ const Wrapper = styled(Container)`
   `}
 `;
 
-const Thumbnail = styled.div`
+const Thumbnail: ComponentType<*> = styled.div`
   display: inherit;
   cursor: zoom-in;
   outline: none;

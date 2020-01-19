@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactImagesCarousel from 'react-images';
 import styled from '@emotion/styled';
-import type { Node } from 'react';
+import type { Node, ComponentType } from 'react';
 import type { ViewType } from 'react-images';
 
 import { Container } from 'components/contentBlocks.js';
@@ -23,7 +23,7 @@ type CssProps = $ReadOnly<{|
   theme: Theme,
 |}>;
 
-const Span = styled.span`
+const Span: ComponentType<*> = styled.span`
   color: ${(props: CssProps) => props.theme.colors.cream};
 `;
 

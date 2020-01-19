@@ -5,9 +5,9 @@ import { SocialIcon } from 'react-social-icons';
 import { useTheme } from 'emotion-theming';
 
 import type { Theme } from 'components/app';
-import type { Node } from 'react';
+import type { Node, ComponentType } from 'react';
 
-const Content = styled.div`
+const Content: ComponentType<*> = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;

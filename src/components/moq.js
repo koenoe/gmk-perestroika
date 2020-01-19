@@ -5,7 +5,7 @@ import { keyframes } from '@emotion/core';
 import { range } from 'lodash';
 import { useInView } from 'react-intersection-observer';
 
-import type { Node } from 'react';
+import type { Node, ComponentType } from 'react';
 import type { Theme } from 'components/app.js';
 
 const MAX = 500;
@@ -24,18 +24,18 @@ const bar = keyframes`
   100% { width: ${({ width }: CssProps) => width}; }
 `;
 
-const Bars = styled.div`
+const Bars: ComponentType<*> = styled.div`
   position: relative;
   width: 100%;
   box-sizing: border-box;
 `;
 
-const BarContainer = styled.div`
+const BarContainer: ComponentType<*> = styled.div`
   display: flex;
   box-sizing: border-box;
 `;
 
-const Label = styled.span`
+const Label: ComponentType<*> = styled.span`
   display: block;
   width: ${LABEL_WIDTH}px;
   height: ${BAR_HEIGHT}px;
@@ -44,7 +44,7 @@ const Label = styled.span`
   font-size: 16px;
 `;
 
-const Bar = styled.div`
+const Bar: ComponentType<*> = styled.div`
   position: relative;
   width: 100%;
   height: ${BAR_HEIGHT}px;
@@ -82,7 +82,7 @@ const Bar = styled.div`
   }
 `;
 
-const Tick = styled.span`
+const Tick: ComponentType<*> = styled.span`
   position: absolute;
   left: ${({ width }: CssProps) => width};
   top: -1px;
@@ -94,7 +94,7 @@ const Tick = styled.span`
   transform: translateX(-2px);
 `;
 
-const Legends = styled.div`
+const Legends: ComponentType<*> = styled.div`
   display: grid;
   grid-template-columns: repeat(${NUMBER_OF_COLUMNS}, 1fr);
   font-size: 13px;
@@ -108,7 +108,7 @@ const Legends = styled.div`
   `}
 `;
 
-const Legend = styled.div`
+const Legend: ComponentType<*> = styled.div`
   transform: translateX(-18px);
 
   &:first-of-type {

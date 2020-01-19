@@ -5,18 +5,18 @@ import styled from '@emotion/styled';
 import useCountdown from 'hooks/useCountdown.js';
 import type { Theme } from 'components/app.js';
 
-import type { Node } from 'react';
+import type { Node, ComponentType } from 'react';
 
 type CssProps = $ReadOnly<{|
   theme: Theme,
 |}>;
 
-const Blocks = styled.div`
+const Blocks: ComponentType<*> = styled.div`
   display: flex;
   user-select: none;
 `;
 
-const Block = styled.div`
+const Block: ComponentType<*> = styled.div`
   margin: 0 5px;
   display: flex;
   flex-direction: column;
@@ -36,23 +36,23 @@ const Block = styled.div`
   }
 `;
 
-const BlockTitle = styled.strong`
+const BlockTitle: ComponentType<*> = styled.strong`
   font-size: 38px;
   line-height: 1;
 `;
 
-const BlockSubtitle = styled.strong`
+const BlockSubtitle: ComponentType<*> = styled.strong`
   font-size: 9px;
   line-height: 1;
 `;
 
-const Title = styled.h1`
+const Title: ComponentType<*> = styled.h1`
   text-align: center;
   font-size: 20px;
   margin-bottom: 10px;
 `;
 
-const Launch = styled.div`
+const Launch: ComponentType<*> = styled.div`
   margin: 0 auto 50px;
   display: flex;
   flex-direction: column;
