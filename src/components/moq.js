@@ -165,7 +165,7 @@ export default function MOQ(): Node {
           ))}
           <Legends>
             {COLUMNS.map(value => (
-              <Legend>{value}</Legend>
+              <Legend key={value}>{value}</Legend>
             ))}
           </Legends>
         </Bars>

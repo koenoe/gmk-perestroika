@@ -6,8 +6,14 @@ import { debounce } from 'lodash';
 import type { Node, ComponentType, ElementRef } from 'react';
 import type { Theme } from 'components/app.js';
 
-import beforeUrl from '../../img/large/office-prophet.jpg';
-import afterUrl from '../../img/large/office-prophet-night.jpg';
+import beforeUrlLarge from '../../img/large/office-prophet.jpg';
+import afterUrlLarge from '../../img/large/office-prophet-night.jpg';
+
+import beforeUrlMedium from '../../img/medium/office-prophet.jpg';
+import afterUrlMedium from '../../img/medium/office-prophet-night.jpg';
+
+import beforeUrlSmall from '../../img/small/office-prophet.jpg';
+import afterUrlSmall from '../../img/small/office-prophet-night.jpg';
 
 type CssProps = $ReadOnly<{|
   theme: Theme,
@@ -94,6 +100,18 @@ const Tip: ComponentType<*> = styled.span`
 `;
 
 type Ref = ElementRef<*>;
+
+const beforeImageSource = {
+  small: beforeUrlSmall,
+  medium: beforeUrlMedium,
+  large: beforeUrlLarge,
+};
+
+const afterImageSource = {
+  small: afterUrlSmall,
+  medium: afterUrlMedium,
+  large: afterUrlLarge,
+};
 
 export default function Cocoen(): Node {
   const ref = useRef<Ref>();
@@ -201,13 +219,19 @@ export default function Cocoen(): Node {
       >
         <Before style={{ width: openRatio }}>
           <BeforeImage
-            src={beforeUrl}
+            src={beforeImageSource.small}
+            srcSet={`${beforeImageSource.small} 300w, ${beforeImageSource.medium} 768w, ${beforeImageSource.large} 1280w`}
             alt=""
             style={{ width: elementWidth }}
             draggable={false}
           />
         </Before>
-        <AfterImage src={afterUrl} alt="" draggable={false} />
+        <AfterImage
+          src={afterImageSource.small}
+          srcSet={`${afterImageSource.small} 300w, ${afterImageSource.medium} 768w, ${afterImageSource.large} 1280w`}
+          alt=""
+          draggable={false}
+        />
         <Drag ref={dragRef} style={{ left: openRatio }} />
       </Container>
       <Legend>
