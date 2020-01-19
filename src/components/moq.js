@@ -3,6 +3,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/core';
 import { range } from 'lodash';
+import { useInView } from 'react-intersection-observer';
 
 import type { Node } from 'react';
 import type { Theme } from 'components/app.js';
@@ -108,7 +109,7 @@ const Legends = styled.div`
 `;
 
 const Legend = styled.div`
-  transform: translateX(-17px);
+  transform: translateX(-18px);
 
   &:first-of-type {
     transform: translateX(-12px);
@@ -145,22 +146,30 @@ const kits: Array<Kit> = [
 ];
 
 export default function MOQ(): Node {
+  const [ref, inView] = useInView({
+    threshold: 0,
+  });
+
   return (
-    <Bars>
-      {kits.map(({ label, moq, sales }) => (
-        <BarContainer key={label}>
-          <Label>{label}</Label>
-          <Bar width={`${(sales / MAX) * 100}%`}>
-            {sales}/{moq}
-            <Tick width={`${(moq / MAX) * 100}%`}>MOQ</Tick>
-          </Bar>
-        </BarContainer>
-      ))}
-      <Legends>
-        {COLUMNS.map(value => (
-          <Legend>{value}</Legend>
-        ))}
-      </Legends>
-    </Bars>
+    <div ref={ref}>
+      {inView && (
+        <Bars>
+          {kits.map(({ label, moq, sales }) => (
+            <BarContainer key={label}>
+              <Label>{label}</Label>
+              <Bar width={`${(sales / MAX) * 100}%`}>
+                {sales}/{moq}
+                <Tick width={`${(moq / MAX) * 100}%`}>MOQ</Tick>
+              </Bar>
+            </BarContainer>
+          ))}
+          <Legends>
+            {COLUMNS.map(value => (
+              <Legend>{value}</Legend>
+            ))}
+          </Legends>
+        </Bars>
+      )}
+    </div>
   );
 }
