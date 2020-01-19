@@ -1,11 +1,11 @@
 // @flow
 import React, { useEffect, useState } from 'react';
+import { shuffle } from 'lodash';
 import type { Node, ComponentType } from 'react';
 
 import styled from '@emotion/styled';
 import Carousel, { Modal, ModalGateway } from 'react-images';
 import { Container } from 'components/contentBlocks.js';
-import shuffleArray from 'utils/shuffleArray.js';
 import type { Theme } from 'components/app.js';
 
 import Image from 'components/image.js';
@@ -117,7 +117,7 @@ const Grid = (): Node => {
   };
 
   useEffect(() => {
-    setGallery(shuffleArray(images));
+    setGallery(shuffle(images));
   }, [images]);
 
   return (
