@@ -6,8 +6,8 @@ import { debounce } from 'lodash';
 import type { Node, ComponentType, ElementRef } from 'react';
 import type { Theme } from 'components/app.js';
 
-import beforeUrl from '../../img/office-prophet.png';
-import afterUrl from '../../img/office-prophet-night.png';
+import beforeUrl from '../../img/large/office-prophet.jpg';
+import afterUrl from '../../img/large/office-prophet-night.jpg';
 
 type CssProps = $ReadOnly<{|
   theme: Theme,

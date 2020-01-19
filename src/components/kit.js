@@ -16,11 +16,22 @@ import {
 import Image from 'components/image.js';
 import Modal from 'components/modal.js';
 import type { Theme } from 'components/app.js';
+import type { ImageSource } from 'components/image.js';
 
-import baseKitUrl from '../../img/base-kit-without-title.png';
-import usualKitUrl from '../../img/usual-kit-without-title.png';
-import unusualKitUrl from '../../img/unusual-kit-without-title.png';
-import modernKitUrl from '../../img/modern-kit-without-title.png';
+import baseKitUrlLarge from '../../img/large/base-kit-without-title.jpg';
+import usualKitUrlLarge from '../../img/large/usual-kit-without-title.jpg';
+import unusualKitUrlLarge from '../../img/large/unusual-kit-without-title.jpg';
+import modernKitUrlLarge from '../../img/large/modern-kit-without-title.jpg';
+
+import baseKitUrlMedium from '../../img/medium/base-kit-without-title.jpg';
+import usualKitUrlMedium from '../../img/medium/usual-kit-without-title.jpg';
+import unusualKitUrlMedium from '../../img/medium/unusual-kit-without-title.jpg';
+import modernKitUrlMedium from '../../img/medium/modern-kit-without-title.jpg';
+
+import baseKitUrlSmall from '../../img/small/base-kit-without-title.jpg';
+import usualKitUrlSmall from '../../img/small/usual-kit-without-title.jpg';
+import unusualKitUrlSmall from '../../img/small/unusual-kit-without-title.jpg';
+import modernKitUrlSmall from '../../img/small/modern-kit-without-title.jpg';
 
 type CssProps = $ReadOnly<{|
   theme: Theme,
@@ -136,7 +147,7 @@ const ModalButton: ComponentType<*> = styled.a`
 type Content = {|
   title: string,
   subtitle: string,
-  image: string,
+  image: ImageSource,
   text: Node,
   price: number,
   vendors: {|
@@ -153,7 +164,11 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
       return {
         title: 'Base kit',
         subtitle: 'Базовый набор',
-        image: baseKitUrl,
+        image: {
+          small: baseKitUrlSmall,
+          medium: baseKitUrlMedium,
+          large: baseKitUrlLarge,
+        },
         text: (
           <>
             <p>
@@ -180,7 +195,11 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
       return {
         title: 'Usual kit',
         subtitle: 'Обычный набор',
-        image: usualKitUrl,
+        image: {
+          small: usualKitUrlSmall,
+          medium: usualKitUrlMedium,
+          large: usualKitUrlLarge,
+        },
         text: (
           <>
             <p>
@@ -207,7 +226,11 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
       return {
         title: 'Unusual kit',
         subtitle: 'Необычный набор',
-        image: unusualKitUrl,
+        image: {
+          small: unusualKitUrlSmall,
+          medium: unusualKitUrlMedium,
+          large: unusualKitUrlLarge,
+        },
         text: (
           <>
             <p>
@@ -232,7 +255,11 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
       return {
         title: 'Modern kit',
         subtitle: 'Современный набор',
-        image: modernKitUrl,
+        image: {
+          small: modernKitUrlSmall,
+          medium: modernKitUrlMedium,
+          large: modernKitUrlLarge,
+        },
         text: (
           <>
             <p>
@@ -255,7 +282,11 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
       return {
         title: '',
         subtitle: '',
-        image: baseKitUrl,
+        image: {
+          small: baseKitUrlSmall,
+          medium: baseKitUrlMedium,
+          large: baseKitUrlLarge,
+        },
         text: '',
         price: 0,
         vendors: {

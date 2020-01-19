@@ -6,11 +6,6 @@ import { keyframes } from '@emotion/core';
 
 import type { ComponentType } from 'react';
 
-// const fadeIn = keyframes`
-//   0% { opacity: 0; }
-//   100% { opacity: 1; }
-// `;
-
 const blur = keyframes`
   0% { filter: blur(0px);}
   50% { filter: blur(10px);}
@@ -20,16 +15,31 @@ const blur = keyframes`
 const Image: ComponentType<*> = styled.img`
   animation: ${blur} 500ms ease;
 `;
+type Src = $ReadOnly<{|
+  small: string,
+  medium: string,
+  large: string,
+|}>;
+
+export type ImageSource = string | Src;
 
 type Props = $ReadOnly<{|
-  src: string,
+  src: ImageSource,
   alt: string,
 |}>;
 
 const LazyLoadedImage = ({ src, alt }: Props) => {
   return (
     <LazyLoad height="100%" offset={100} once>
-      <Image src={src} alt={alt} />
+      {typeof src === 'string' ? (
+        <Image src={src} alt={alt} />
+      ) : (
+        <Image
+          src={src.small}
+          srcSet={`${src.small} 300w, ${src.medium} 768w, ${src.large} 1280w`}
+          alt={alt}
+        />
+      )}
     </LazyLoad>
   );
 };
