@@ -12,6 +12,7 @@ import Grid from 'components/grid.js';
 import Heading from 'components/heading.js';
 import Kit from 'components/kit.js';
 import MOQ from 'components/moq.js';
+import Vendors from 'components/vendors.js';
 import Footer from 'components/footer.js';
 import type { Theme } from 'components/app.js';
 
@@ -161,6 +162,10 @@ export default function Main(): Node {
       <Container>
         <H1>MOQ progress</H1>
         <MOQ />
+      </Container>
+      <Container>
+        <H1>Vendors</H1>
+        <Vendors />
       </Container>
       <Footer />
     </Layout>

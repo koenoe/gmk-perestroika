@@ -5,6 +5,8 @@ import { keyframes } from '@emotion/core';
 import { range } from 'lodash';
 import { useInView } from 'react-intersection-observer';
 
+import { Container } from 'components/contentBlocks.js';
+
 import type { Node, ComponentType } from 'react';
 import type { Theme } from 'components/app.js';
 
@@ -130,22 +132,22 @@ const kits: Array<Kit> = [
   {
     label: 'Base',
     moq: 250,
-    sales: 10,
+    sales: 0,
   },
   {
     label: 'Usual',
     moq: 100,
-    sales: 10,
+    sales: 0,
   },
   {
     label: 'Unusual',
     moq: 100,
-    sales: 10,
+    sales: 0,
   },
   {
     label: 'Modern',
     moq: 100,
-    sales: 10,
+    sales: 0,
   },
 ];
 
@@ -155,7 +157,7 @@ export default function MOQ(): Node {
   });
 
   return (
-    <div ref={ref}>
+    <Container ref={ref}>
       {inView && (
         <Bars>
           {kits.map(({ label, moq, sales }) => (
@@ -174,6 +176,6 @@ export default function MOQ(): Node {
           </Legends>
         </Bars>
       )}
-    </div>
+    </Container>
   );
 }
