@@ -54,6 +54,7 @@ export default function GDPR(): Node {
     ReactGA.initialize('UA-156150051-1', {
       debug: process.env.NODE_ENV === 'development',
     });
+    ReactGA.pageview(window.location.pathname + window.location.search);
 
     if (cookies[COOKIE_NAME]) {
       setShow(false);
