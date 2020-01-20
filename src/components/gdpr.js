@@ -46,23 +46,25 @@ const Content: ComponentType<*> = styled.div`
   `}
 `;
 
-const init = () => {
-  ReactGA.initialize('UA-156150051-1');
-};
-
 export default function GDPR(): Node {
   const [cookies, setCookie] = useCookies([COOKIE_NAME]);
   const [show, setShow] = useState<boolean>(true);
 
   useEffect(() => {
+    ReactGA.initialize('UA-156150051-1', {
+      debug: process.env.NODE_ENV === 'development',
+    });
+
     if (cookies[COOKIE_NAME]) {
       setShow(false);
     }
-  }, []);
+  }, [ReactGA]);
 
   useEffect(() => {
-    if (!show) {
-      init();
+    if (show) {
+      ReactGA.set({ anonymizeIp: true });
+    } else {
+      ReactGA.set({ anonymizeIp: false });
     }
   }, [show]);
 
