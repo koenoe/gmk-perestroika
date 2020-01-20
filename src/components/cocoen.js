@@ -160,9 +160,7 @@ export default function Cocoen(): Node {
     setX(calculateXfromEvent(e));
   };
 
-  const onDragEnd = e => {
-    e.preventDefault();
-
+  const onDragEnd = () => {
     setIsDragging(false);
   };
 
