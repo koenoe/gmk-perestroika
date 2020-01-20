@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "add-domain": "echo \"gmk-perestroika.com\" > build/CNAME",
-    "build": "NODE_ENV=production webpack -p --config ./webpack/config.prod.js",
+    "build": "cross-env NODE_ENV=production webpack -p --config ./webpack/config.prod.js",
     "build:open": "yarn build && http-server ./build -p 4000 -o",
     "clean-dist": "rimraf ./build && mkdir build",
     "deploy": "yarn build && yarn add-domain && gh-pages -d build",
@@ -61,6 +61,7 @@
     "compression-webpack-plugin": "3.1.0",
     "copy-webpack-plugin": "5.1.1",
     "coveralls": "3.0.9",
+    "cross-env": "6.0.3",
     "css-loader": "3.4.2",
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.2",
