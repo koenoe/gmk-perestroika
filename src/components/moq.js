@@ -52,7 +52,7 @@ const Bar: ComponentType<*> = styled.div`
   line-height: ${BAR_HEIGHT}px;
   color: ${({ theme }: CssProps) => theme.colors.red};
   padding: 0 0 0 10px;
-  font-size: 13px;
+  font-size: 11px;
   z-index: 0;
 
   &:before {
@@ -80,6 +80,10 @@ const Bar: ComponentType<*> = styled.div`
     width: ${({ width }: CssProps) => width};
     z-index: -1;
   }
+
+  ${({ theme }) => theme.media.m`
+    font-size: 13px;
+  `}
 `;
 
 const Tick: ComponentType<*> = styled.span`

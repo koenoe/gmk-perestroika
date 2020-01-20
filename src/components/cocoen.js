@@ -3,6 +3,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import styled from '@emotion/styled';
 import { debounce } from 'lodash';
 
+import { Container as ContentBlockContainer } from 'components/contentBlocks.js';
+
 import type { Node, ComponentType, ElementRef } from 'react';
 import type { Theme } from 'components/app.js';
 
@@ -18,6 +20,12 @@ import afterUrlSmall from '../../img/small/office-prophet-night.jpg';
 type CssProps = $ReadOnly<{|
   theme: Theme,
 |}>;
+
+const Wrapper: ComponentType<*> = styled(ContentBlockContainer)`
+  img {
+    max-width: none;
+  }
+`;
 
 const Container: ComponentType<*> = styled.div`
   box-sizing: border-box;
@@ -86,7 +94,7 @@ const Legend: ComponentType<*> = styled.div`
   grid-template-columns: auto auto auto;
   font-style: italic;
   font-size: 12px;
-  margin: 10px 0 75px 0;
+  margin: 10px 0 0 0;
   box-sizing: border-box;
   text-align: center;
 
@@ -206,7 +214,7 @@ export default function Cocoen(): Node {
   }, []);
 
   return (
-    <>
+    <Wrapper>
       <Container
         onMouseDown={onDragStart}
         onTouchStart={onDragStart}
@@ -237,6 +245,6 @@ export default function Cocoen(): Node {
         <Tip>(move slider to left or right)</Tip>
         <span>night</span>
       </Legend>
-    </>
+    </Wrapper>
   );
 }
