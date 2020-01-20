@@ -1,0 +1,20 @@
+[ignore]
+.*/node_modules/.*
+build
+
+[include]
+src/**/*.js
+
+[libs]
+flow-typed
+
+[lints]
+deprecated-utility=off
+
+[options]
+; Folders
+module.name_mapper='^\(\/?.*\)$' -> '<PROJECT_ROOT>/src/\1'
+; Extensions
+module.file_ext=.js
+
+[strict]
