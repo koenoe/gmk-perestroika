@@ -17,7 +17,7 @@
     "lint:css": "stylelint \"src/**/*.css\"",
     "lint:js": "eslint \"src/**/*.js\"",
     "prebuild": "yarn lint && yarn clean-dist",
-    "serve": "webpack-dev-server --port 3000 --config ./webpack/config.dev.js --log-level error --hot --history-api-fallback --disable-host-check",
+    "serve": "webpack-dev-server --port 3000 --config ./webpack/config.dev.js --log-level error --hot --history-api-fallback --disable-host-check --host 0.0.0.0",
     "start": "yarn serve",
     "test": "jest --passWithNoTests",
     "test:cover": "yarn test --coverage",
