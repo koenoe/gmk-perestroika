@@ -73,6 +73,7 @@ export default function App(): Node {
             line-height: 1.8;
             background: ${theme.colors.red};
             color: ${theme.colors.cream};
+            overflow-x: hidden;
           }
           h1,
           h2,
