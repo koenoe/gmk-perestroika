@@ -53,7 +53,7 @@ const Title: ComponentType<*> = styled.h1`
 `;
 
 const Launch: ComponentType<*> = styled.div`
-  margin: 0 auto 50px;
+  margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;

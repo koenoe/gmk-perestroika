@@ -113,11 +113,23 @@ const H1 = styled.h1`
   }
 `;
 
+const CountdownLegend = styled.div`
+  width: 100%;
+  text-align: center;
+  margin: 10px auto 50px;
+  font-style: italic;
+  font-size: 12px;
+  opacity: 0.4;
+`;
+
 export default function Main(): Node {
   return (
     <Layout>
       <Logo src={logoUrl} />
       <Countdown start="2020-02-01T00:00:00" end="2020-02-29T23:59:59" />
+      <CountdownLegend>
+        Estimated start of shipping will be September, 2020.
+      </CountdownLegend>
       <IntroContainer>
         <Header>
           <Heading alignment="center">
