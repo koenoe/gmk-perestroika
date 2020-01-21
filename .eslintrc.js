@@ -1,13 +1,6 @@
-// const fs = require('fs');
-// const path = require('path');
-
-// const prettierOptions = JSON.parse(
-//   fs.readFileSync(path.resolve(__dirname, '.prettierrc'), 'utf8'),
-// );
-
 module.exports = {
   parser: 'babel-eslint',
-  extends: ['tidal', 'tidal/flow', 'tidal/react'],
+  extends: ['tidal', 'tidal/prettier', 'tidal/flow', 'tidal/react'],
   env: {
     browser: true,
     es6: true,
