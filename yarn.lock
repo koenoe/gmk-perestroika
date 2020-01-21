@@ -4034,7 +4034,7 @@ eslint-config-prettier@6.9.0:
 
 "eslint-config-tidal@git://github.com/koenoe/eslint-config-tidal.git#master":
   version "2.0.0"
-  resolved "git://github.com/koenoe/eslint-config-tidal.git#d2b5c17771a514a180062442ee1d8dc275a3eb40"
+  resolved "git://github.com/koenoe/eslint-config-tidal.git#8a1acf4df1d03c53f3bde13e5d84fa2e54d9fe15"
   dependencies:
     confusing-browser-globals "^1.0.9"
 

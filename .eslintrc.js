@@ -1,6 +1,7 @@
 module.exports = {
   parser: 'babel-eslint',
-  extends: ['tidal', 'tidal/prettier', 'tidal/flow', 'tidal/react'],
+  extends: ['tidal', 'tidal/flow', 'tidal/react', 'prettier', 'plugin:prettier/recommended', 'prettier/flowtype'],
+  plugins: ['prettier'],
   env: {
     browser: true,
     es6: true,
@@ -15,7 +16,9 @@ module.exports = {
     },
     sourceType: 'module',
   },
-  rules: {},
+  rules: {
+    'prettier/prettier': 'error',
+  },
   settings: {
     'import/resolver': {
       webpack: {
