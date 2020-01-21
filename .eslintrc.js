@@ -8,7 +8,7 @@ module.exports = {
     node: true,
   },
   parserOptions: {
-    ecmaVersion: 6,
+    ecmaVersion: 2018,
     ecmaFeatures: {
       jsx: true,
       experimentalObjectRestSpread: true,
