@@ -139,7 +139,7 @@ function FooterCount(props: ViewType): Node {
   const { currentIndex, views } = props;
   return (
     <Span>
-      {currentIndex + 1}/{views.length}
+      {currentIndex + 1} / {views.length}
     </Span>
   );
 }

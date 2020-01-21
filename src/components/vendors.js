@@ -88,7 +88,7 @@ export default function Vendors(): Node {
 
   useEffect(() => {
     setGallery(shuffle(vendors));
-  }, [vendors]);
+  }, []);
 
   return (
     <Container>

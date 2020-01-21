@@ -193,7 +193,7 @@ const Grid = (): Node => {
 
   useEffect(() => {
     setGallery(shuffle(images));
-  }, [images]);
+  }, []);
 
   return (
     <>

@@ -131,19 +131,6 @@ export default function Cocoen(): Node {
   const [x, setX] = useState<number>(0);
   const [openRatio, setOpenRatio] = useState<string>('50%');
 
-  const calculateOpenRatio = (activeX: number): string => {
-    let value = activeX;
-    if (activeX < 0) {
-      value = dragElementWidth;
-    } else if (activeX >= elementWidth) {
-      value = elementWidth - dragElementWidth;
-    }
-
-    let ratio = value + dragElementWidth / 2;
-    ratio /= elementWidth;
-    return `${ratio * 100}%`;
-  };
-
   const calculateXfromEvent = e => {
     const clientX = e.clientX ? e.clientX : e.touches[0].clientX;
     const offsetLeft = ref.current
@@ -192,10 +179,23 @@ export default function Cocoen(): Node {
       return;
     }
 
+    const calculateOpenRatio = (activeX: number): string => {
+      let value = activeX;
+      if (activeX < 0) {
+        value = dragElementWidth;
+      } else if (activeX >= elementWidth) {
+        value = elementWidth - dragElementWidth;
+      }
+
+      let ratio = value + dragElementWidth / 2;
+      ratio /= elementWidth;
+      return `${ratio * 100}%`;
+    };
+
     window.requestAnimationFrame(() => {
       setOpenRatio(calculateOpenRatio(x));
     });
-  }, [x]);
+  }, [dragElementWidth, elementWidth, x]);
 
   useEffect(() => {
     const debouncedUpdateDimensions = debounce(updateDimensions, 250);

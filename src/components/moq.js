@@ -164,7 +164,7 @@ export default function MOQ(): Node {
             <BarContainer key={label}>
               <Label>{label}</Label>
               <Bar width={`${(sales / MAX) * 100}%`}>
-                {sales}/{moq}
+                {sales}/ {moq}
                 <Tick width={`${(moq / MAX) * 100}%`}>MOQ</Tick>
               </Bar>
             </BarContainer>

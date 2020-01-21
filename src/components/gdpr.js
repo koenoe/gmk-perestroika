@@ -59,7 +59,7 @@ export default function GDPR(): Node {
     if (cookies[COOKIE_NAME]) {
       setShow(false);
     }
-  }, [ReactGA]);
+  }, [cookies]);
 
   useEffect(() => {
     if (show) {

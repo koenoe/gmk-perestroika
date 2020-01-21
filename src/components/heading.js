@@ -72,7 +72,7 @@ export default function Heading({ children, alignment }: Props): Node {
     }
 
     setTextLength(ref.current.textContent.length);
-  });
+  }, []);
 
   return (
     <Header ref={ref} textLength={`${textLength}ex`} alignment={alignment}>
