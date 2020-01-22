@@ -128,7 +128,7 @@ export default function Main(): Node {
       <Logo src={logoUrl} />
       <Countdown start="2020-02-01T00:00:00" end="2020-02-29T23:59:59" />
       <CountdownLegend>
-        Estimated start of shipping will be September, 2020.
+        Shipping is estimated to start October, 2020
       </CountdownLegend>
       <IntroContainer>
         <Header>

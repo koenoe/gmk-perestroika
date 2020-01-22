@@ -39,16 +39,23 @@ type CssProps = $ReadOnly<{|
 
 const Price: ComponentType<*> = styled.span`
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 5px;
+  right: 5px;
   color: ${({ theme }: CssProps) => theme.colors.red};
   background: ${({ theme }: CssProps) => theme.colors.cream};
   display: inline-block;
-  padding: 5px 15px;
-  font-size: 13px;
+  padding: 2px 6px;
+  font-size: 12px;
   font-family: Arial, sans-serif;
   font-weight: bold;
   cursor: default;
+
+  ${({ theme }) => theme.media.m`
+    padding: 5px 15px;
+    top: 15px;
+    right: 15px;
+    font-size: 13px;
+  `}
 `;
 
 const buttonStyles = ({ theme }: CssProps) =>
@@ -99,11 +106,19 @@ const ModalContent: ComponentType<*> = styled.div`
 
 const ModalHeader: ComponentType<*> = styled.div`
   margin: 25px 0 0 50%;
-  transform: translateX(-75%);
+  transform: translateX(-91%);
   white-space: nowrap;
 
+  header h1 {
+    font-size: 26px;
+
+    ${({ theme }) => theme.media.m`
+      font-size: 34px;
+    `}
+  }
+
   ${({ theme }: CssProps) => theme.media.l`
-    transform: translateX(-50%);
+    transform: translateX(-60%);
   `}
 `;
 
@@ -183,12 +198,12 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
             </p>
           </>
         ),
-        price: 0,
+        price: 129.99,
         vendors: {
-          europe: 'https://mykeyboard.eu',
-          america: 'https://store.projectkeyboard.com',
-          oceania: 'https://dailyclack.com',
-          asia: 'https://ilumkb.com',
+          europe: 'https://mykeyboard.eu/catalogue/category/keycaps/gmk_105/',
+          america: 'https://store.projectkeyboard.com/collections/group-buys',
+          oceania: 'https://dailyclack.com/collections/group-buys',
+          asia: 'https://ilumkb.com/collections/groupbuy',
         },
       };
     case 'usual':
@@ -214,12 +229,12 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
             </p>
           </>
         ),
-        price: 0,
+        price: 59.99,
         vendors: {
-          europe: 'https://mykeyboard.eu',
-          america: 'https://store.projectkeyboard.com',
-          oceania: 'https://dailyclack.com',
-          asia: 'https://ilumkb.com',
+          europe: 'https://mykeyboard.eu/catalogue/category/keycaps/gmk_105/',
+          america: 'https://store.projectkeyboard.com/collections/group-buys',
+          oceania: 'https://dailyclack.com/collections/group-buys',
+          asia: 'https://ilumkb.com/collections/groupbuy',
         },
       };
     case 'unusual':
@@ -243,12 +258,12 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
             </p>
           </>
         ),
-        price: 0,
+        price: 39.99,
         vendors: {
-          europe: 'https://mykeyboard.eu',
-          america: 'https://store.projectkeyboard.com',
-          oceania: 'https://dailyclack.com',
-          asia: 'https://ilumkb.com',
+          europe: 'https://mykeyboard.eu/catalogue/category/keycaps/gmk_105/',
+          america: 'https://store.projectkeyboard.com/collections/group-buys',
+          oceania: 'https://dailyclack.com/collections/group-buys',
+          asia: 'https://ilumkb.com/collections/groupbuy',
         },
       };
     case 'modern':
@@ -270,12 +285,12 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
             <p>Forward-thinkers, we salute you.</p>
           </>
         ),
-        price: 0,
+        price: 39.99,
         vendors: {
-          europe: 'https://mykeyboard.eu',
-          america: 'https://store.projectkeyboard.com',
-          oceania: 'https://dailyclack.com',
-          asia: 'https://ilumkb.com',
+          europe: 'https://mykeyboard.eu/catalogue/category/keycaps/gmk_105/',
+          america: 'https://store.projectkeyboard.com/collections/group-buys',
+          oceania: 'https://dailyclack.com/collections/group-buys',
+          asia: 'https://ilumkb.com/collections/groupbuy',
         },
       };
     default:
@@ -290,10 +305,10 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
         text: '',
         price: 0,
         vendors: {
-          europe: 'https://mykeyboard.eu',
-          america: 'https://store.projectkeyboard.com',
-          oceania: 'https://dailyclack.com',
-          asia: 'https://ilumkb.com',
+          europe: 'https://mykeyboard.eu/catalogue/category/keycaps/gmk_105/',
+          america: 'https://store.projectkeyboard.com/collections/group-buys',
+          oceania: 'https://dailyclack.com/collections/group-buys',
+          asia: 'https://ilumkb.com/collections/groupbuy',
         },
       };
   }
@@ -356,7 +371,7 @@ export default function Kit({ type, alignment }: Props): Node {
             <ModalContent state={state}>
               <ModalHeader>
                 <Heading alignment="center">
-                  <h1>Choose vendor</h1>
+                  <h1>Choose your region</h1>
                 </Heading>
               </ModalHeader>
               <ModalButtons>
