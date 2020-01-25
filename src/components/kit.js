@@ -198,7 +198,7 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
             </p>
           </>
         ),
-        price: 129.99,
+        price: 129,
         vendors: {
           europe: 'https://mykeyboard.eu/catalogue/category/keycaps/gmk_105/',
           america: 'https://store.projectkeyboard.com/collections/group-buys',
@@ -229,7 +229,7 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
             </p>
           </>
         ),
-        price: 59.99,
+        price: 59,
         vendors: {
           europe: 'https://mykeyboard.eu/catalogue/category/keycaps/gmk_105/',
           america: 'https://store.projectkeyboard.com/collections/group-buys',
@@ -258,7 +258,7 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
             </p>
           </>
         ),
-        price: 39.99,
+        price: 39,
         vendors: {
           europe: 'https://mykeyboard.eu/catalogue/category/keycaps/gmk_105/',
           america: 'https://store.projectkeyboard.com/collections/group-buys',
@@ -285,7 +285,7 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
             <p>Forward-thinkers, we salute you.</p>
           </>
         ),
-        price: 39.99,
+        price: 39,
         vendors: {
           europe: 'https://mykeyboard.eu/catalogue/category/keycaps/gmk_105/',
           america: 'https://store.projectkeyboard.com/collections/group-buys',
@@ -356,7 +356,7 @@ export default function Kit({ type, alignment }: Props): Node {
             {text}
             {price > 0 && (
               <Button type="button" onClick={handleOpen}>
-                Buy now
+                pre-order
               </Button>
             )}
           </Text>
