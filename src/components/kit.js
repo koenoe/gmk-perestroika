@@ -117,6 +117,10 @@ const ModalHeader: ComponentType<*> = styled.div`
     `}
   }
 
+  ${({ theme }: CssProps) => theme.media.m`
+    transform: translateX(-57%);
+  `}
+
   ${({ theme }: CssProps) => theme.media.l`
     transform: translateX(-60%);
   `}
@@ -159,19 +163,42 @@ const ModalButton: ComponentType<*> = styled.a`
   `}
 `;
 
+type Region = {|
+  name: string,
+  url: string,
+|};
+
 type Content = {|
   title: string,
   subtitle: string,
   image: ImageSource,
   text: Node,
   price: number,
-  vendors: {|
-    europe: string,
-    america: string,
-    oceania: string,
-    asia: string,
-  |},
+  regions: Array<Region>,
 |};
+
+const DEFAULT_REGIONS = [
+  {
+    name: 'America',
+    url: 'https://store.projectkeyboard.com/collections/group-buys',
+  },
+  {
+    name: 'Europe',
+    url: 'https://mykeyboard.eu/catalogue/category/keycaps/gmk_105/',
+  },
+  {
+    name: 'Asia',
+    url: 'https://ilumkb.com/collections/groupbuy',
+  },
+  {
+    name: 'Oceania',
+    url: 'https://dailyclack.com/collections/group-buys',
+  },
+  {
+    name: 'UA/RU/BY',
+    url: 'https://groupbuy.funkeys.com.ua/gmk_perestroika',
+  },
+];
 
 function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
   switch (type) {
@@ -199,12 +226,7 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
           </>
         ),
         price: 129,
-        vendors: {
-          europe: 'https://mykeyboard.eu/catalogue/category/keycaps/gmk_105/',
-          america: 'https://store.projectkeyboard.com/collections/group-buys',
-          oceania: 'https://dailyclack.com/collections/group-buys',
-          asia: 'https://ilumkb.com/collections/groupbuy',
-        },
+        regions: DEFAULT_REGIONS,
       };
     case 'usual':
       return {
@@ -230,12 +252,7 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
           </>
         ),
         price: 59,
-        vendors: {
-          europe: 'https://mykeyboard.eu/catalogue/category/keycaps/gmk_105/',
-          america: 'https://store.projectkeyboard.com/collections/group-buys',
-          oceania: 'https://dailyclack.com/collections/group-buys',
-          asia: 'https://ilumkb.com/collections/groupbuy',
-        },
+        regions: DEFAULT_REGIONS,
       };
     case 'unusual':
       return {
@@ -259,12 +276,7 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
           </>
         ),
         price: 39,
-        vendors: {
-          europe: 'https://mykeyboard.eu/catalogue/category/keycaps/gmk_105/',
-          america: 'https://store.projectkeyboard.com/collections/group-buys',
-          oceania: 'https://dailyclack.com/collections/group-buys',
-          asia: 'https://ilumkb.com/collections/groupbuy',
-        },
+        regions: DEFAULT_REGIONS,
       };
     case 'modern':
       return {
@@ -286,12 +298,7 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
           </>
         ),
         price: 39,
-        vendors: {
-          europe: 'https://mykeyboard.eu/catalogue/category/keycaps/gmk_105/',
-          america: 'https://store.projectkeyboard.com/collections/group-buys',
-          oceania: 'https://dailyclack.com/collections/group-buys',
-          asia: 'https://ilumkb.com/collections/groupbuy',
-        },
+        regions: DEFAULT_REGIONS,
       };
     default:
       return {
@@ -304,12 +311,7 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
         },
         text: '',
         price: 0,
-        vendors: {
-          europe: 'https://mykeyboard.eu/catalogue/category/keycaps/gmk_105/',
-          america: 'https://store.projectkeyboard.com/collections/group-buys',
-          oceania: 'https://dailyclack.com/collections/group-buys',
-          asia: 'https://ilumkb.com/collections/groupbuy',
-        },
+        regions: DEFAULT_REGIONS,
       };
   }
 }
@@ -321,9 +323,7 @@ type Props = $ReadOnly<{|
 
 export default function Kit({ type, alignment }: Props): Node {
   const [showBuyModal, setShowBuyModal] = useState<boolean>(false);
-  const { title, subtitle, image, text, price, vendors } = getContent(type);
-  const vendorNames = Object.keys(vendors);
-  const vendorUrls = Object.values(vendors);
+  const { title, subtitle, image, text, price, regions } = getContent(type);
 
   const handleOpen = (e: SyntheticMouseEvent<>) => {
     e.preventDefault();
@@ -375,10 +375,10 @@ export default function Kit({ type, alignment }: Props): Node {
                 </Heading>
               </ModalHeader>
               <ModalButtons>
-                {vendorNames.map((name, index) => (
+                {regions.map(({ name, url }) => (
                   <ModalButton
                     key={name}
-                    href={vendorUrls[index]}
+                    href={url}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
