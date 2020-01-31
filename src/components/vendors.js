@@ -62,7 +62,7 @@ const vendors: Array<Vendor> = [
     id: 1,
     name: 'Project Keyboard',
     logo: projectKeyboardLogoUrl,
-    url: 'https://store.projectkeyboard.com',
+    url: 'https://store.projectkeyboard.com/products/gb-gmk-perestroika',
   },
   {
     id: 2,
@@ -74,7 +74,7 @@ const vendors: Array<Vendor> = [
     id: 3,
     name: 'Daily Clack',
     logo: dailyClackLogoUrl,
-    url: 'https://store.projectkeyboard.com',
+    url: 'https://dailyclack.com/products/gmk-perestroika',
   },
   {
     id: 4,
@@ -86,7 +86,7 @@ const vendors: Array<Vendor> = [
     id: 5,
     name: 'Funkeys',
     logo: funkeysLogoUrl,
-    url: 'https://funkeys.com.ua',
+    url: 'https://groupbuy.funkeys.com.ua/gmk_perestroika',
   },
 ];
 

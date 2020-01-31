@@ -180,7 +180,7 @@ type Content = {|
 const DEFAULT_REGIONS = [
   {
     name: 'America',
-    url: 'https://store.projectkeyboard.com/collections/group-buys',
+    url: 'https://store.projectkeyboard.com/products/gb-gmk-perestroika',
   },
   {
     name: 'Europe',
@@ -192,7 +192,7 @@ const DEFAULT_REGIONS = [
   },
   {
     name: 'Oceania',
-    url: 'https://dailyclack.com/collections/group-buys',
+    url: 'https://dailyclack.com/products/gmk-perestroika',
   },
   {
     name: 'UA/RU/BY',
@@ -226,7 +226,31 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
           </>
         ),
         price: 129,
-        regions: DEFAULT_REGIONS,
+        regions: [
+          {
+            name: 'America',
+            url:
+              'https://store.projectkeyboard.com/products/gb-gmk-perestroika?variant=31337017606257',
+          },
+          {
+            name: 'Europe',
+            url: 'https://mykeyboard.eu/catalogue/category/keycaps/gmk_105/',
+          },
+          {
+            name: 'Asia',
+            url: 'https://ilumkb.com/collections/groupbuy',
+          },
+          {
+            name: 'Oceania',
+            url:
+              'https://dailyclack.com/products/gmk-perestroika?variant=31584925515831',
+          },
+          {
+            name: 'UA/RU/BY',
+            url:
+              'https://groupbuy.funkeys.com.ua/gmk_perestroika/tproduct/157587512-999644158584-base-kit',
+          },
+        ],
       };
     case 'usual':
       return {
@@ -252,7 +276,31 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
           </>
         ),
         price: 59,
-        regions: DEFAULT_REGIONS,
+        regions: [
+          {
+            name: 'America',
+            url:
+              'https://store.projectkeyboard.com/products/gb-gmk-perestroika?variant=31337017639025',
+          },
+          {
+            name: 'Europe',
+            url: 'https://mykeyboard.eu/catalogue/category/keycaps/gmk_105/',
+          },
+          {
+            name: 'Asia',
+            url: 'https://ilumkb.com/collections/groupbuy',
+          },
+          {
+            name: 'Oceania',
+            url:
+              'https://dailyclack.com/products/gmk-perestroika?variant=31584925548599',
+          },
+          {
+            name: 'UA/RU/BY',
+            url:
+              'https://groupbuy.funkeys.com.ua/gmk_perestroika/tproduct/157587512-542746597523-usual-kit',
+          },
+        ],
       };
     case 'unusual':
       return {
@@ -276,7 +324,31 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
           </>
         ),
         price: 39,
-        regions: DEFAULT_REGIONS,
+        regions: [
+          {
+            name: 'America',
+            url:
+              'https://store.projectkeyboard.com/products/gb-gmk-perestroika?variant=31337017671793',
+          },
+          {
+            name: 'Europe',
+            url: 'https://mykeyboard.eu/catalogue/category/keycaps/gmk_105/',
+          },
+          {
+            name: 'Asia',
+            url: 'https://ilumkb.com/collections/groupbuy',
+          },
+          {
+            name: 'Oceania',
+            url:
+              'https://dailyclack.com/products/gmk-perestroika?variant=31584925581367',
+          },
+          {
+            name: 'UA/RU/BY',
+            url:
+              'https://groupbuy.funkeys.com.ua/gmk_perestroika/tproduct/157587512-835935533317-unusual-kit',
+          },
+        ],
       };
     case 'modern':
       return {
@@ -298,7 +370,31 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
           </>
         ),
         price: 39,
-        regions: DEFAULT_REGIONS,
+        regions: [
+          {
+            name: 'America',
+            url:
+              'https://store.projectkeyboard.com/products/gb-gmk-perestroika?variant=31337017704561',
+          },
+          {
+            name: 'Europe',
+            url: 'https://mykeyboard.eu/catalogue/category/keycaps/gmk_105/',
+          },
+          {
+            name: 'Asia',
+            url: 'https://ilumkb.com/collections/groupbuy',
+          },
+          {
+            name: 'Oceania',
+            url:
+              'https://dailyclack.com/products/gmk-perestroika?variant=31584925614135',
+          },
+          {
+            name: 'UA/RU/BY',
+            url:
+              'https://groupbuy.funkeys.com.ua/gmk_perestroika/tproduct/157587512-708240241518-modern-kit',
+          },
+        ],
       };
     default:
       return {
