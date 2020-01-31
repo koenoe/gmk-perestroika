@@ -80,7 +80,7 @@ const vendors: Array<Vendor> = [
     id: 4,
     name: 'iLumkb',
     logo: ilumkbLogoUrl,
-    url: 'https://ilumkb.com',
+    url: 'https://ilumkb.com/collections/groupbuy/products/gb-gmk-perestroika',
   },
   {
     id: 5,

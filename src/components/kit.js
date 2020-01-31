@@ -188,7 +188,7 @@ const DEFAULT_REGIONS = [
   },
   {
     name: 'Asia',
-    url: 'https://ilumkb.com/collections/groupbuy',
+    url: 'https://ilumkb.com/collections/groupbuy/products/gb-gmk-perestroika',
   },
   {
     name: 'Oceania',
@@ -238,7 +238,8 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
           },
           {
             name: 'Asia',
-            url: 'https://ilumkb.com/collections/groupbuy',
+            url:
+              'https://ilumkb.com/collections/groupbuy/products/gb-gmk-perestroika?variant=31884551979090',
           },
           {
             name: 'Oceania',
@@ -288,7 +289,8 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
           },
           {
             name: 'Asia',
-            url: 'https://ilumkb.com/collections/groupbuy',
+            url:
+              'https://ilumkb.com/collections/groupbuy/products/gb-gmk-perestroika?variant=31884552044626',
           },
           {
             name: 'Oceania',
@@ -336,7 +338,8 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
           },
           {
             name: 'Asia',
-            url: 'https://ilumkb.com/collections/groupbuy',
+            url:
+              'https://ilumkb.com/collections/groupbuy/products/gb-gmk-perestroika?variant=31884552077394',
           },
           {
             name: 'Oceania',
@@ -382,7 +385,8 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
           },
           {
             name: 'Asia',
-            url: 'https://ilumkb.com/collections/groupbuy',
+            url:
+              'https://ilumkb.com/collections/groupbuy/products/gb-gmk-perestroika?variant=31884552110162',
           },
           {
             name: 'Oceania',
