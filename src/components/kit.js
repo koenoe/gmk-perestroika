@@ -184,7 +184,8 @@ const DEFAULT_REGIONS = [
   },
   {
     name: 'Europe',
-    url: 'https://mykeyboard.eu/catalogue/category/keycaps/gmk_105/',
+    url:
+      'https://mykeyboard.eu/catalogue/category/group-buys/gmk-perestroika_253/',
   },
   {
     name: 'Asia',
@@ -234,7 +235,8 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
           },
           {
             name: 'Europe',
-            url: 'https://mykeyboard.eu/catalogue/category/keycaps/gmk_105/',
+            url:
+              'https://mykeyboard.eu/catalogue/gmk-perestroika-base-kit_1708/',
           },
           {
             name: 'Asia',
@@ -285,7 +287,8 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
           },
           {
             name: 'Europe',
-            url: 'https://mykeyboard.eu/catalogue/category/keycaps/gmk_105/',
+            url:
+              'https://mykeyboard.eu/catalogue/gmk-perestroika-usual-kit_1707/',
           },
           {
             name: 'Asia',
@@ -334,7 +337,8 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
           },
           {
             name: 'Europe',
-            url: 'https://mykeyboard.eu/catalogue/category/keycaps/gmk_105/',
+            url:
+              'https://mykeyboard.eu/catalogue/gmk-perestroika-unusual-kit_1706/',
           },
           {
             name: 'Asia',
@@ -381,7 +385,8 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
           },
           {
             name: 'Europe',
-            url: 'https://mykeyboard.eu/catalogue/category/keycaps/gmk_105/',
+            url:
+              'https://mykeyboard.eu/catalogue/gmk-perestroika-modern-kit_1705/',
           },
           {
             name: 'Asia',

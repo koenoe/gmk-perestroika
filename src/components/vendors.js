@@ -68,7 +68,8 @@ const vendors: Array<Vendor> = [
     id: 2,
     name: 'MyKeyboard',
     logo: myKeyboardLogoUrl,
-    url: 'https://mykeyboard.eu',
+    url:
+      'https://mykeyboard.eu/catalogue/category/group-buys/gmk-perestroika_253/',
   },
   {
     id: 3,

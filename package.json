@@ -1,7 +1,7 @@
 {
   "name": "gmk-perestroika",
-  "version": "1.1.3",
-  "main": "index.js",
+  "version": "1.1.4",
+  "main": "index.html",
   "repository": "git@github.com:koenoe/gmk-perestroika.git",
   "author": "Koen Romers <info@koenromers.com>",
   "license": "MIT",
