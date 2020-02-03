@@ -39,16 +39,23 @@ type CssProps = $ReadOnly<{|
 
 const Price: ComponentType<*> = styled.span`
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 5px;
+  right: 5px;
   color: ${({ theme }: CssProps) => theme.colors.red};
   background: ${({ theme }: CssProps) => theme.colors.cream};
   display: inline-block;
-  padding: 5px 15px;
-  font-size: 13px;
+  padding: 2px 6px;
+  font-size: 12px;
   font-family: Arial, sans-serif;
   font-weight: bold;
   cursor: default;
+
+  ${({ theme }) => theme.media.m`
+    padding: 5px 15px;
+    top: 15px;
+    right: 15px;
+    font-size: 13px;
+  `}
 `;
 
 const buttonStyles = ({ theme }: CssProps) =>
@@ -99,11 +106,23 @@ const ModalContent: ComponentType<*> = styled.div`
 
 const ModalHeader: ComponentType<*> = styled.div`
   margin: 25px 0 0 50%;
-  transform: translateX(-75%);
+  transform: translateX(-91%);
   white-space: nowrap;
 
+  header h1 {
+    font-size: 26px;
+
+    ${({ theme }) => theme.media.m`
+      font-size: 34px;
+    `}
+  }
+
+  ${({ theme }: CssProps) => theme.media.m`
+    transform: translateX(-57%);
+  `}
+
   ${({ theme }: CssProps) => theme.media.l`
-    transform: translateX(-50%);
+    transform: translateX(-60%);
   `}
 `;
 
@@ -144,19 +163,43 @@ const ModalButton: ComponentType<*> = styled.a`
   `}
 `;
 
+type Region = {|
+  name: string,
+  url: string,
+|};
+
 type Content = {|
   title: string,
   subtitle: string,
   image: ImageSource,
   text: Node,
   price: number,
-  vendors: {|
-    europe: string,
-    america: string,
-    oceania: string,
-    asia: string,
-  |},
+  regions: Array<Region>,
 |};
+
+const DEFAULT_REGIONS = [
+  {
+    name: 'America',
+    url: 'https://store.projectkeyboard.com/products/gb-gmk-perestroika',
+  },
+  {
+    name: 'Europe',
+    url:
+      'https://mykeyboard.eu/catalogue/category/group-buys/gmk-perestroika_253/',
+  },
+  {
+    name: 'Asia',
+    url: 'https://ilumkb.com/collections/groupbuy/products/gb-gmk-perestroika',
+  },
+  {
+    name: 'Oceania',
+    url: 'https://dailyclack.com/products/gmk-perestroika',
+  },
+  {
+    name: 'UA/RU/BY',
+    url: 'https://groupbuy.funkeys.com.ua/gmk_perestroika',
+  },
+];
 
 function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
   switch (type) {
@@ -183,13 +226,34 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
             </p>
           </>
         ),
-        price: 0,
-        vendors: {
-          europe: 'https://mykeyboard.eu',
-          america: 'https://store.projectkeyboard.com',
-          oceania: 'https://dailyclack.com',
-          asia: 'https://ilumkb.com',
-        },
+        price: 129,
+        regions: [
+          {
+            name: 'America',
+            url:
+              'https://store.projectkeyboard.com/products/gb-gmk-perestroika?variant=31337017606257',
+          },
+          {
+            name: 'Europe',
+            url:
+              'https://mykeyboard.eu/catalogue/gmk-perestroika-base-kit_1708/',
+          },
+          {
+            name: 'Asia',
+            url:
+              'https://ilumkb.com/collections/groupbuy/products/gb-gmk-perestroika?variant=31884551979090',
+          },
+          {
+            name: 'Oceania',
+            url:
+              'https://dailyclack.com/products/gmk-perestroika?variant=31584925515831',
+          },
+          {
+            name: 'UA/RU/BY',
+            url:
+              'https://groupbuy.funkeys.com.ua/gmk_perestroika/tproduct/157587512-999644158584-base-kit',
+          },
+        ],
       };
     case 'usual':
       return {
@@ -214,13 +278,34 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
             </p>
           </>
         ),
-        price: 0,
-        vendors: {
-          europe: 'https://mykeyboard.eu',
-          america: 'https://store.projectkeyboard.com',
-          oceania: 'https://dailyclack.com',
-          asia: 'https://ilumkb.com',
-        },
+        price: 59,
+        regions: [
+          {
+            name: 'America',
+            url:
+              'https://store.projectkeyboard.com/products/gb-gmk-perestroika?variant=31337017639025',
+          },
+          {
+            name: 'Europe',
+            url:
+              'https://mykeyboard.eu/catalogue/gmk-perestroika-usual-kit_1707/',
+          },
+          {
+            name: 'Asia',
+            url:
+              'https://ilumkb.com/collections/groupbuy/products/gb-gmk-perestroika?variant=31884552044626',
+          },
+          {
+            name: 'Oceania',
+            url:
+              'https://dailyclack.com/products/gmk-perestroika?variant=31584925548599',
+          },
+          {
+            name: 'UA/RU/BY',
+            url:
+              'https://groupbuy.funkeys.com.ua/gmk_perestroika/tproduct/157587512-542746597523-usual-kit',
+          },
+        ],
       };
     case 'unusual':
       return {
@@ -243,13 +328,34 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
             </p>
           </>
         ),
-        price: 0,
-        vendors: {
-          europe: 'https://mykeyboard.eu',
-          america: 'https://store.projectkeyboard.com',
-          oceania: 'https://dailyclack.com',
-          asia: 'https://ilumkb.com',
-        },
+        price: 39,
+        regions: [
+          {
+            name: 'America',
+            url:
+              'https://store.projectkeyboard.com/products/gb-gmk-perestroika?variant=31337017671793',
+          },
+          {
+            name: 'Europe',
+            url:
+              'https://mykeyboard.eu/catalogue/gmk-perestroika-unusual-kit_1706/',
+          },
+          {
+            name: 'Asia',
+            url:
+              'https://ilumkb.com/collections/groupbuy/products/gb-gmk-perestroika?variant=31884552077394',
+          },
+          {
+            name: 'Oceania',
+            url:
+              'https://dailyclack.com/products/gmk-perestroika?variant=31584925581367',
+          },
+          {
+            name: 'UA/RU/BY',
+            url:
+              'https://groupbuy.funkeys.com.ua/gmk_perestroika/tproduct/157587512-835935533317-unusual-kit',
+          },
+        ],
       };
     case 'modern':
       return {
@@ -270,13 +376,34 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
             <p>Forward-thinkers, we salute you.</p>
           </>
         ),
-        price: 0,
-        vendors: {
-          europe: 'https://mykeyboard.eu',
-          america: 'https://store.projectkeyboard.com',
-          oceania: 'https://dailyclack.com',
-          asia: 'https://ilumkb.com',
-        },
+        price: 39,
+        regions: [
+          {
+            name: 'America',
+            url:
+              'https://store.projectkeyboard.com/products/gb-gmk-perestroika?variant=31337017704561',
+          },
+          {
+            name: 'Europe',
+            url:
+              'https://mykeyboard.eu/catalogue/gmk-perestroika-modern-kit_1705/',
+          },
+          {
+            name: 'Asia',
+            url:
+              'https://ilumkb.com/collections/groupbuy/products/gb-gmk-perestroika?variant=31884552110162',
+          },
+          {
+            name: 'Oceania',
+            url:
+              'https://dailyclack.com/products/gmk-perestroika?variant=31584925614135',
+          },
+          {
+            name: 'UA/RU/BY',
+            url:
+              'https://groupbuy.funkeys.com.ua/gmk_perestroika/tproduct/157587512-708240241518-modern-kit',
+          },
+        ],
       };
     default:
       return {
@@ -289,12 +416,7 @@ function getContent(type: 'base' | 'usual' | 'unusual' | 'modern'): Content {
         },
         text: '',
         price: 0,
-        vendors: {
-          europe: 'https://mykeyboard.eu',
-          america: 'https://store.projectkeyboard.com',
-          oceania: 'https://dailyclack.com',
-          asia: 'https://ilumkb.com',
-        },
+        regions: DEFAULT_REGIONS,
       };
   }
 }
@@ -306,9 +428,7 @@ type Props = $ReadOnly<{|
 
 export default function Kit({ type, alignment }: Props): Node {
   const [showBuyModal, setShowBuyModal] = useState<boolean>(false);
-  const { title, subtitle, image, text, price, vendors } = getContent(type);
-  const vendorNames = Object.keys(vendors);
-  const vendorUrls = Object.values(vendors);
+  const { title, subtitle, image, text, price, regions } = getContent(type);
 
   const handleOpen = (e: SyntheticMouseEvent<>) => {
     e.preventDefault();
@@ -341,7 +461,7 @@ export default function Kit({ type, alignment }: Props): Node {
             {text}
             {price > 0 && (
               <Button type="button" onClick={handleOpen}>
-                Buy now
+                pre-order
               </Button>
             )}
           </Text>
@@ -356,14 +476,14 @@ export default function Kit({ type, alignment }: Props): Node {
             <ModalContent state={state}>
               <ModalHeader>
                 <Heading alignment="center">
-                  <h1>Choose vendor</h1>
+                  <h1>Choose your region</h1>
                 </Heading>
               </ModalHeader>
               <ModalButtons>
-                {vendorNames.map((name, index) => (
+                {regions.map(({ name, url }) => (
                   <ModalButton
                     key={name}
-                    href={vendorUrls[index]}
+                    href={url}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
