@@ -10,8 +10,8 @@ import { Container } from 'components/contentBlocks.js';
 import type { Node, ComponentType } from 'react';
 import type { Theme } from 'components/app.js';
 
-const MAX = 500;
-const NUMBER_OF_COLUMNS = 5;
+const MAX = 400;
+const NUMBER_OF_COLUMNS = 4;
 const COLUMNS = range(0, MAX, MAX / NUMBER_OF_COLUMNS);
 const BAR_HEIGHT = 50;
 const LABEL_WIDTH = 100;
@@ -132,22 +132,22 @@ const kits: Array<Kit> = [
   {
     label: 'Base',
     moq: 250,
-    sales: 0,
+    sales: 84,
   },
   {
     label: 'Usual',
     moq: 100,
-    sales: 0,
+    sales: 27,
   },
   {
     label: 'Unusual',
     moq: 100,
-    sales: 0,
+    sales: 23,
   },
   {
     label: 'Modern',
     moq: 100,
-    sales: 0,
+    sales: 22,
   },
 ];
 
