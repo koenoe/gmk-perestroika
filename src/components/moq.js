@@ -132,22 +132,22 @@ const kits: Array<Kit> = [
   {
     label: 'Base',
     moq: 250,
-    sales: 311,
+    sales: 324,
   },
   {
     label: 'Usual',
     moq: 100,
-    sales: 86,
+    sales: 95,
   },
   {
     label: 'Unusual',
     moq: 100,
-    sales: 72,
+    sales: 75,
   },
   {
     label: 'Modern',
     moq: 100,
-    sales: 85,
+    sales: 88,
   },
 ];
 
